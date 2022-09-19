@@ -1,5 +1,5 @@
 <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
-  <label for="email"><b>First name</b></label>
+  <label for="fname"><b>First name</b></label>
   <input
     type="text"
     ngModel
@@ -11,7 +11,7 @@
     required
   />
 
-  <label for="email"><b>Last name</b></label>
+  <label for="lname"><b>Last name</b></label>
   <input
     type="text"
     ngModel
@@ -20,18 +20,6 @@
     placeholder="Enter Last name"
     name="lname"
     id="lname"
-    required
-  />
-
-  <label for="email"><b>University</b></label>
-  <input
-    type="text"
-    ngModel
-    #universityInput="ngModel"
-    [(ngModel)]="university"
-    placeholder="Enter university"
-    name="university"
-    id="university"
     required
   />
 
@@ -47,7 +35,7 @@
     required
   />
 
-  <label for="email"><b>Mobile No.</b></label>
+  <label for="mobileNo"><b>Mobile No.</b></label>
   <input
     type="text"
     ngModel
