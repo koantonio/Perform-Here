@@ -5,9 +5,11 @@ import { SignInComponent } from 'src/app/auth/sign-in/sign-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard';
+import { LandingContentComponent } from './landing-content/landing-content.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component:LandingContentComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
   {
