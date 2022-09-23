@@ -11,7 +11,7 @@ interface formDataInterface {
   name: string;
   family_name: string;
   email: string;
-  phone_number: string;
+  //phone_number: string;
   [key: string]: string;
 }
 
@@ -21,26 +21,33 @@ interface formDataInterface {
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
+
   isLoading: boolean = false;
   fname: string = '';
   lname: string = '';
   university: string = '';
   email: string = '';
-  mobileNo: string = '';
+  //mobileNo: string = '';
   password: string = '';
+  confirmPassword: string = '';
+  isArtist: boolean = false;
 
   constructor(private router: Router) {}
-
+  
   ngOnInit(): void {}
 
+  setArtist(event: Event) {
+    this.isArtist = (event.target as HTMLInputElement).checked;
+  }
+
   onSignup(form: NgForm) {
-    if (form.valid) {
+    if (form.valid && this.confirmPassword == this.password) {
       this.isLoading = true;
       console.log(
         this.fname,
         this.lname,
         this.email,
-        this.mobileNo,
+        //this.mobileNo,
         this.password
       );
       var poolData = {
@@ -56,7 +63,7 @@ export class SignUpComponent implements OnInit {
         name: this.fname,
         family_name: this.lname,
         email: this.email,
-        phone_number: this.mobileNo,
+        //phone_number: this.mobileNo,
       };
 
       for (let key in formData) {

@@ -1,64 +1,126 @@
-<form (submit)="onSignup(signupForm)" #signupForm="ngForm">
-  <label for="fname"><b>First name</b></label>
-  <input
-    type="text"
-    ngModel
-    #fnameInput="ngModel"
-    [(ngModel)]="fname"
-    placeholder="Enter First name"
-    name="fname"
-    id="fname"
-    required
-  />
+<div class="page">
+  <div class="register vstack gap-1">
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" class="card shadow-2-strong card-registration clearfix">
+      <h1>Sign up</h1>
+      
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="fname"><b>First name</b></label>
+          <input
+            type="text"
+            ngModel
+            #fnameInput="ngModel"
+            [(ngModel)]="fname"
+            placeholder="Enter First name"
+            name="fname"
+            id="fname"
+            class="form-control text"
+            required
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lname"><b>Last name</b></label>
+          <input
+            type="text"
+            ngModel
+            #lnameInput="ngModel"
+            [(ngModel)]="lname"
+            placeholder="Enter Last name"
+            name="lname"
+            id="lname"
+            class="form-control text"
+            value="input 2"
+            required
+          />
+        </div>
+      </div>
+      
+        
+      <div class="form-group">
+        <label for="email"><b>Email</b></label>
+        <input
+          type="text"
+          ngModel
+          #emailInput="ngModel"
+          [(ngModel)]="email"
+          placeholder="Enter Email"
+          name="email"
+          id="email"
+          required
+          class="form-control text"
+        />
+      </div>
 
-  <label for="lname"><b>Last name</b></label>
-  <input
-    type="text"
-    ngModel
-    #lnameInput="ngModel"
-    [(ngModel)]="lname"
-    placeholder="Enter Last name"
-    name="lname"
-    id="lname"
-    required
-  />
+      <!-- Phone Number
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label for="countryCode"><b>Country</b></label>
+          <select id="countryCode" class="form-control">
+            <option selected>+1</option>
+            <option>...</option>
+          </select>
+        </div>
 
-  <label for="email"><b>Email</b></label>
-  <input
-    type="text"
-    ngModel
-    #emailInput="ngModel"
-    [(ngModel)]="email"
-    placeholder="Enter Email"
-    name="email"
-    id="email"
-    required
-  />
+        <div class="form-group col-md-9">
+          <label for="mobileNo"><b>Mobile No.</b></label>
+          <input
+            type="text"
+            ngModel
+            #mobileNoInput="ngModel"
+            [(ngModel)]="mobileNo"
+            placeholder="Enter mobile no"
+            name="mobileNo"
+            id="mobileNo"
+            required
+            class="form-control"
+          />
+        </div>
+      </div>
+      -->
 
-  <label for="mobileNo"><b>Mobile No.</b></label>
-  <input
-    type="text"
-    ngModel
-    #mobileNoInput="ngModel"
-    [(ngModel)]="mobileNo"
-    placeholder="Enter mobile no"
-    name="mobileNo"
-    id="mobileNo"
-    required
-  />
+      <div class="form-group">
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          name="password"
+          ngModel
+          minlength="8"
+          #passwordInput="ngModel"
+          [(ngModel)]="password"
+          placeholder="Enter Password"
+          id="psw"
+          required
+          class="form-control text"
+        />
+      </div>
+      
 
-  <label for="psw"><b>Password</b></label>
-  <input
-    type="password"
-    name="password"
-    ngModel
-    minlength="8"
-    #passwordInput="ngModel"
-    [(ngModel)]="password"
-    placeholder="Enter Password"
-    id="psw"
-    required
-  />
+      <div class="form-group">
+        <label for="con-psw"><b>Confirm Password</b></label>
+        <input
+          type="password"
+          name="confirm-password"
+          ngModel
+          minlength="8"
+          #passwordInput="ngModel"
+          [(ngModel)]="confirmPassword"
+          placeholder="Enter Password"
+          id="con-psw"
+          required
+          class="form-control text"
+        />
+      </div>
+      <div class="form-check">
+        <input #setArtistCheckBox class="form-check-input" type="checkbox" id="setArtistCheckBox" (change)="setArtist($event)">
+        <label class="form-check-label" for="setArtistCheckBox">
+          Sign Up as an Artist?
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Create Account</button>
+    </form>
+    <div>
+      <p class="login">Already have an account? <a [routerLink]="'/signin'">Log in</a></p>
+    </div>
 
-  <button type="submit" class="registerbtn">Register</button>
-</form>
+  </div>
+</div>
