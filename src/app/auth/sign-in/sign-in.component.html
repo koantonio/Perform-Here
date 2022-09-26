@@ -1,27 +1,41 @@
-<form (submit)="onSignIn(signInForm)" #signInForm="ngForm">
-  <label for="email"><b>Email address</b></label>
-  <input
-    name="email"
-    ngModel
-    type="email"
-    #emailInput="ngModel"
-    [(ngModel)]="email_address"
-    email
-    placeholder="Enter Username"
-    required
-  />
+<div class="page">
+<div class="register vstack gap-1">
+  <form (submit)="onSignIn(signInForm)" #signInForm="ngForm" class="card shadow-2-strong card-registration clearfix">
+    <h1>Login</h1>
+    <br>
+    <label for="email"><b>Email address</b></label>
+    <input
+      name="email"
+      ngModel
+      type="email"
+      #emailInput="ngModel"
+      [(ngModel)]="email_address"
+      email
+      placeholder="Enter Username"
+      required
+    />
+   
+    <label for="password"><b>Password</b></label>
+    <input
+      [(ngModel)]="password"
+      ngModel
+      type="password"
+      minlength="8"
+      #passwordInput="ngModel"
+      required
+      name="password"
+      placeholder="Enter Password"
+    />
 
-  <label for="password"><b>Password</b></label>
-  <input
-    [(ngModel)]="password"
-    ngModel
-    type="password"
-    minlength="8"
-    #passwordInput="ngModel"
-    required
-    name="password"
-    placeholder="Enter Password"
-  />
+    <label class="form-check-label">
+      Forgot Password?
+    </label>
 
-  <button type="submit">Login</button>
-</form>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+  </form>
+  <div>
+    <p class="login">Don't have an account? <a [routerLink]="'/signup'">Sign Up</a></p>
+  </div>
+
+</div>
+</div>
