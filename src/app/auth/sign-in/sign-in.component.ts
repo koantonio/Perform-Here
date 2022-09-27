@@ -20,7 +20,10 @@ export class SignInComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //this.dataService.broadcast('authSuccess',{auth:'successful'})
+
+  }
 
   onSignIn(form: NgForm) {
     if (form.valid) {
@@ -44,7 +47,7 @@ export class SignInComponent implements OnInit {
       var cognitoUser = new CognitoUser(userData);
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: (result) => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['browse']);
         },
 
         onFailure: (err) => {
