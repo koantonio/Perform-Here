@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArtistsService } from '../artists.service';
 
 @Component({
   selector: 'app-browsing-content',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowsingContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private artistService:ArtistsService) { }
 
   ngOnInit(): void {
   }
 
+  addArtist() {
+    this.artistService.addArtist().subscribe(res => console.log(res));
+  }
 }

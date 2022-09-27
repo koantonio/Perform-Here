@@ -10,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LandingContentComponent } from './landing-content/landing-content.component';
 import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { NavbarContentComponent } from './navbar-content/navbar-content.componen
     BrowsingContentComponent,
     NavbarContentComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
