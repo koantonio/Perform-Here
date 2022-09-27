@@ -8,6 +8,8 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LandingContentComponent } from './landing-content/landing-content.component';
+import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
+import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { LandingContentComponent } from './landing-content/landing-content.compo
     SignUpComponent,
     SignInComponent,
     DashboardComponent,
-    LandingContentComponent
+    LandingContentComponent,
+    BrowsingContentComponent,
+    NavbarContentComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
