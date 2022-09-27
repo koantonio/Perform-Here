@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import { environment } from 'src/environments/environment';
+import { ArtistsService } from '../artists.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private artistService: ArtistsService) {}
 
   ngOnInit(): void {}
 
@@ -23,5 +24,9 @@ export class DashboardComponent implements OnInit {
     console.log(cognitoUser);
     cognitoUser?.signOut();
     this.router.navigate(['signin']);
+  }
+
+  addArtist() {
+    this.artistService.addArtist().subscribe(res => console.log(res));
   }
 }
