@@ -4,15 +4,16 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-navbar-content',
+  templateUrl: './navbar-content.component.html',
+  styleUrls: ['./navbar-content.component.css']
 })
-export class DashboardComponent implements OnInit {
-  constructor(private router: Router) {}
+export class NavbarContentComponent implements OnInit {
 
-  ngOnInit(): void {}
+  constructor(private router: Router) { }
 
+  ngOnInit(): void {
+  }
   onLogout(): void {
     let poolData = {
       UserPoolId: 'us-west-2_kefXUvzNA',
@@ -24,4 +25,6 @@ export class DashboardComponent implements OnInit {
     cognitoUser?.signOut();
     this.router.navigate(['signin']);
   }
+
+
 }

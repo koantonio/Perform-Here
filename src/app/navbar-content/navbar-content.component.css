@@ -1,0 +1,25 @@
+/* .box {
+    background-color: purple;
+    height: 50px;
+    width: 50%;
+    display: flex;
+    flex-wrap:wrap;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+}
+.stuff{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 50%;
+} */
+
+.navbar{
+    background-color: #7C00F8;
+}
+.peopleImage{
+    width: 50px;
+    height: 90%;
+}
