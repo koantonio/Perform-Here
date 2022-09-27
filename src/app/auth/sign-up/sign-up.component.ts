@@ -87,7 +87,12 @@ export class SignUpComponent implements OnInit {
             alert(err.message || JSON.stringify(err));
             return;
           }
-          this.router.navigate(['/signin']);
+          if(this.isArtist) {
+            this.router.navigate(['/performer_form']);
+          }
+          else {
+            this.router.navigate(['/signin']);
+          }
         }
       );
     } else {
