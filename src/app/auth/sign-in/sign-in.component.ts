@@ -35,8 +35,8 @@ export class SignInComponent implements OnInit {
       });
 
       let poolData = {
-        UserPoolId: environment.cognitoUserPoolId, // Your user pool id here
-        ClientId: environment.cognitoAppClientId, // Your client id here
+        UserPoolId: 'us-west-2_kefXUvzNA', // Your user pool id here
+        ClientId: '7naup3g2ase11sfgcihln1dbct', // Your client id here
       };
 
       let userPool = new CognitoUserPool(poolData);
