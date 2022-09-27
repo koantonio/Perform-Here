@@ -15,8 +15,8 @@ export class DashboardComponent implements OnInit {
 
   onLogout(): void {
     let poolData = {
-      UserPoolId: environment.cognitoUserPoolId,
-      ClientId: environment.cognitoAppClientId,
+      UserPoolId: 'us-west-2_kefXUvzNA',
+      ClientId: '7naup3g2ase11sfgcihln1dbct',
     };
     let userPool = new CognitoUserPool(poolData);
     let cognitoUser = userPool.getCurrentUser();
