@@ -13,8 +13,8 @@ export class AuthService {
     var isAuth = false;
 
     let poolData = {
-      UserPoolId: environment.cognitoUserPoolId,
-      ClientId: environment.cognitoAppClientId
+      UserPoolId: 'us-west-2_kefXUvzNA',
+      ClientId: '7naup3g2ase11sfgcihln1dbct'
     };
 
     var userPool = new CognitoUserPool(poolData);

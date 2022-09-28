@@ -7,12 +7,14 @@ import { PerformerFormComponent } from './performer-form/performer-form.componen
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard';
 import { LandingContentComponent } from './landing-content/landing-content.component'
-
+import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
+import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:LandingContentComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
+  {path: 'browse', component: BrowsingContentComponent},
   {
     path: 'dashboard',
     component: DashboardComponent,
