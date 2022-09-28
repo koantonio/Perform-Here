@@ -19,8 +19,10 @@ export class AuthService {
 
     var userPool = new CognitoUserPool(poolData);
     var cognitoUser = userPool.getCurrentUser();
+    
 
     if (cognitoUser != null) {
+      
       cognitoUser.getSession((err: any, session: any) => {
         if (err) {
           alert(err.message || JSON.stringify(err));
