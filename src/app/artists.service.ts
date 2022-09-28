@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 import { Artist } from './artist';
 
 @Injectable({
@@ -17,31 +17,32 @@ export class ArtistsService {
 
   constructor(private http:HttpClient) { }
 
-  addArtist() {
+  addArtist(artist: Artist) {
     const body = {
-      "artist": "whyareyouaddingmultipletimes"
+      "artist": artist.artist
     }
-
     return this.http.post("https://o6xu4u1o3b.execute-api.us-west-2.amazonaws.com/default/960476_post", body, this.postHeaders)
     .pipe(
       catchError(this.handleError)
     );
   }
   
-  getAllArtists() {
-    return this.http.get<Artist[]>("https://o6xu4u1o3b.execute-api.us-west-2.amazonaws.com/default/960476_get")
+  getAllArtists():Observable<Artist[]> {
+    return this.http.get<Artist[]>("https://eyd4la9qa3.execute-api.us-west-2.amazonaws.com/default/960169_getTest")
     .pipe(
       catchError(this.handleError)
     );
   }
 
-  // getArtistById(id:string) {
-  //   this.http.get()
-  // }
+  getArtistById(id:string) {
+    return this.getAllArtists().pipe(
+      map(res => res.find(artist => artist.userID === id)),
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     console.log(error);
-    // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

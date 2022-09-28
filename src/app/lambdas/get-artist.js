@@ -35,7 +35,7 @@ exports.handler = async (event) => {
             "Access-Control-Allow-Origin": "https://o6xu4u1o3b.execute-api.us-west-2.amazonaws.com/default/960476_post",
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(items),
     };
 
     // All log statements are written to CloudWatch
