@@ -1,17 +1,22 @@
+<app-navbar-content></app-navbar-content>
 <div class="page">
-    <app-navbar-content></app-navbar-content>
+    <h1>Choose an artist</h1>
     <div class="search">
         <div class="searchbar">
             <input
             type="search"
             class="form-control rounded"
             placeholder="Search here"
+            [(ngModel)]="search"
+            (ngModelChange)="updateArtists()"
             />
         </div>
     </div>
-    <div class="search-results">
-
-    </div>
+    <ul class="artists">
+        <button class="btn btn-primary" *ngFor="let a of newArtists">
+            {{a.stageName}}
+        </button>
+    </ul>
 </div>
 <!-- <div class="search"> -->
     <!-- <input
