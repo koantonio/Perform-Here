@@ -68,3 +68,9 @@ h1 {
 input.text{
     box-shadow: 5px 3px 5px rgba(92, 99, 105, .2);
 }
+
+.validator {
+    color: red;
+    font-style: italic;
+    font-size: x-small;
+}
