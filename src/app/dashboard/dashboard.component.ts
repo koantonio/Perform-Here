@@ -4,6 +4,7 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import { environment } from 'src/environments/environment';
 import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
+import { Votes } from '../votes';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   addArtist() {
-    let artist: Artist = new Artist("1", "bobby");
+    let artist: Artist = new Artist("1", "bobby", "I am an artist", [new Votes("sf", 10), new Votes("nj", 0)]);
     this.artistService.addArtist(artist).subscribe(res => console.log(res));
   }
 

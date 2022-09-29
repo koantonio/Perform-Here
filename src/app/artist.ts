@@ -1,6 +1,10 @@
+import { Votes } from './votes';
+
 export class Artist {
     constructor(
         public userID: string,
-        public artist: string
+        public stageName: string,
+        public artistBio : string,
+        public votes : Array<Votes>
     ) {}
 }
