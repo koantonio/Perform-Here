@@ -9,8 +9,21 @@ import { Artist } from '../artist';
 })
 export class BrowsingContentComponent implements OnInit {
 
+  artists: Artist[] = [];
+  newArtists: Artist[] = [];
+  search: string = '';
+
   constructor(private artistService:ArtistsService) { }
 
   ngOnInit(): void {
+    this.artistService.getAllArtists().subscribe(artists => {
+      this.artists = artists
+      this.newArtists = artists
+    });
   }
+
+  updateArtists() {
+    this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.search.toLowerCase()));
+  }
+
 }
