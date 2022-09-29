@@ -24,6 +24,19 @@
     height: 90%;
 }
 
-.dropdown{
+/* .dropdown{
     background-color: #7C00F8;
+} */
+
+#dropdownProfileButton{
+    background-color:#7C00F8;
+    border: none;
+}
+
+#dropdownElements{
+    background: linear-gradient(90deg, rgba(255,138,0,1) 0%, rgba(241,231,250,1) 0%);
+    /* background-color:#7C00F8; */
+    /* background:  linear-gradient(90deg, rgba(255,138,0,1) 15%, rgba(124,0,248,1) 85%); */
+    border: none;
+
 }
