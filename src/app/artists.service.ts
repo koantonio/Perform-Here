@@ -20,7 +20,9 @@ export class ArtistsService {
 
   addArtist(artist: Artist) {
     const body = {
-      "artist": artist.artist
+      "stageName": artist.stageName,
+      "artistBio": artist.artistBio,
+      "votes": artist.votes
     }
     return this.http.post("https://o6xu4u1o3b.execute-api.us-west-2.amazonaws.com/default/960476_post", body, this.postHeaders)
     .pipe(
