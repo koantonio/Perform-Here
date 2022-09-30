@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/forms';
 import { ArtistsService } from '../artists.service';
 import { ArtistForm } from '../artistForm';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-performer-form',
@@ -20,7 +21,7 @@ export class PerformerFormComponent implements OnInit {
     phoneno: ['',[Validators.required, Validators.pattern("^[0-9-]*$")]],
   });
 
-  constructor(private formBuilder: FormBuilder, private artistService: ArtistsService) { 
+  constructor(private router: Router, private formBuilder: FormBuilder, private artistService: ArtistsService) { 
   }
 
   ngOnInit(): void {
@@ -51,13 +52,14 @@ export class PerformerFormComponent implements OnInit {
   }
 
   onSubmit() {
-    let aform: ArtistForm = new ArtistForm("1", this.artistForm.get('firstname')?.value, 
-                                                this.artistForm.get('lastname')?.value, 
-                                                this.artistForm.get('stagename')?.value, 
-                                                this.artistForm.get('accountemail')?.value, 
-                                                this.artistForm.get('managementemail')?.value, 
-                                                this.artistForm.get('managementemail')?.value);
+    let aform: ArtistForm = new ArtistForm("1", this.firstname?.value, 
+                                                this.lastname?.value, 
+                                                this.stagename?.value, 
+                                                this.accountemail?.value, 
+                                                this.managementemail?.value, 
+                                                this.phoneno?.value);
     this.artistService.addArtistForm(aform).subscribe(res => console.log(res));
+    this.router.navigate(['/signin']);
   }
 
 }
