@@ -11,6 +11,7 @@ import { PerformerFormComponent } from './performer-form/performer-form.componen
 import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     LandingContentComponent,
     PerformerFormComponent,
     BrowsingContentComponent,
-    NavbarContentComponent
+    NavbarContentComponent,
+    ProfileComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

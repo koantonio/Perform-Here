@@ -9,12 +9,14 @@ import { AuthGuard } from './auth/auth-guard';
 import { LandingContentComponent } from './landing-content/landing-content.component'
 import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
+import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:LandingContentComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
   {path: 'browse', component: BrowsingContentComponent},
+  {path: 'profile', component: ProfileComponent},
   {
     path: 'dashboard',
     component: DashboardComponent,
