@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   email_address: string = '';
   password: string = '';
-  id: string = "Test";
+  
 
   constructor(private router: Router, private userService: UserService) {}
 
@@ -53,23 +53,23 @@ export class SignInComponent implements OnInit {
 
 
         onSuccess: (result) => {
-
-          cognitoUser.getSession(function(err: any, session: any) {
+          var id: string = "Test";
+          cognitoUser.getSession((err: any, session: any) => {
             if (err) {
               console.error(err);
               return;
             }
           });
     
-          cognitoUser.getUserAttributes((err, result:any) => {
+          cognitoUser.getUserAttributes((err: any, result:any) => {
             if (err) {
               alert(err.message || JSON.stringify(err));
               return;
             }
-            this.id = JSON.parse(result[0]).Value;
-          });
-          this.userService.setUserId(this.id);
-          this.router.navigate(['browse']);
+            id = JSON.parse(result[0]).Value;
+            this.userService.setUserId(id);
+            this.router.navigate(['browse']);
+          })
         },
 
         onFailure: (err) => {
