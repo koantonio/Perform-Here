@@ -7,6 +7,7 @@ import {
   CognitoUserPool,
 } from 'amazon-cognito-identity-js';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,8 +18,9 @@ export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   email_address: string = '';
   password: string = '';
+  id: string = "Test";
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
     //this.dataService.broadcast('authSuccess',{auth:'successful'})
@@ -26,6 +28,8 @@ export class SignInComponent implements OnInit {
   }
 
   onSignIn(form: NgForm) {
+    
+
     if (form.valid) {
       this.isLoading = true;
       console.log(this.email_address, this.password);
@@ -46,7 +50,25 @@ export class SignInComponent implements OnInit {
       };
       var cognitoUser = new CognitoUser(userData);
       cognitoUser.authenticateUser(authenticationDetails, {
+
+
         onSuccess: (result) => {
+
+          cognitoUser.getSession(function(err: any, session: any) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+          });
+    
+          cognitoUser.getUserAttributes((err, result:any) => {
+            if (err) {
+              alert(err.message || JSON.stringify(err));
+              return;
+            }
+            this.id = JSON.parse(result[0]).Value;
+          });
+          this.userService.setUserId(this.id);
           this.router.navigate(['browse']);
         },
 
@@ -55,6 +77,7 @@ export class SignInComponent implements OnInit {
           this.isLoading = false;
         },
       });
+
     } else {
       console.log('invalid');
     }

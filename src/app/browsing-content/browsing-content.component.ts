@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
 import { Votes } from '../votes';
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-browsing-content',
@@ -16,7 +17,7 @@ export class BrowsingContentComponent implements OnInit {
   searchText : string = "";
   newArtists: Artist[] = [];
 
-  constructor(private artistService: ArtistsService) {
+  constructor(private artistService: ArtistsService, private userService: UserService) {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists
       this.newArtists = artists;
@@ -24,7 +25,7 @@ export class BrowsingContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    console.log(this.userService.getUserId());
   }
   
   updateArtists() {
