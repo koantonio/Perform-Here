@@ -1,7 +1,10 @@
 <app-navbar-content></app-navbar-content>
 <div class="page">
+    <app-navbar-content></app-navbar-content>
+    <app-search-component (searchTextChanged)="onSearchTextEntered($event)"></app-search-component>
+    <!-- <div class="search">
     <h1>Choose an artist</h1>
-    <div class="search">
+        <div class="search">
         <div class="searchbar">
             <input
             type="search"
@@ -11,15 +14,39 @@
             (ngModelChange)="updateArtists()"
             />
         </div>
+    </div> --> -->
+    <div class = "result-container">
+        <div class="search-results" *ngFor="let artist of artists">
+        <!-- <div class="artists text-white">
+            <div class="displayArtists" *ngFor="let artist of artists">
+                <h1>{{artist.stageName}}</h1>
+                <h1> {{artist.artistBio}}</h1>
+            </div>
+
+        </div> -->
+            <div class="browse-grid" *ngIf="searchText === ''||artist.stageName.toLowerCase().includes(searchText) || artist.stageName.toUpperCase().includes(searchText)" >
+                <div class="artist-card">
+                    <div class="artist-card-body text-light">
+                        <div class="concert-img">
+                            <img class="concertImage" alt="app" src="/assets/concert2.webp"/>
+                        </div>
+                        <div class="artist-card-title">
+                            <h3>{{artist.stageName}}</h3>
+                        </div>
+                        <div class="artist-card-bio">
+                            <p>{{artist.artistBio}}</p>
+                        </div>
+                        <div class="voteButton">
+                            <button class="votebtn text-light">Vote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <ul class="artists">
-        <button class="btn btn-primary" *ngFor="let a of newArtists">
-            {{a.stageName}}
-        </button>
-    </ul>
 </div>
-<!-- <div class="search"> -->
-    <!-- <input
+<!--<div class="search">
+    <input
     type="search"
     class="form-control rounded"
     placeholder="Search here"
