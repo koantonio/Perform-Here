@@ -20,15 +20,17 @@ export class BrowsingContentComponent implements OnInit {
 
 
   constructor(private artistService: ArtistsService) {
-    this.artistService.getAllArtists().subscribe(artists=>
-      this.artists=artists);
+    this.artistService.getAllArtists().subscribe(artists=>{
+      this.artists=artists;
+      this.newArtists = artists;
+      
+    });
   }
 
   ngOnInit(): void {
-  this.newArtists = artists;
   }
   updateArtists() {
-    this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.search.toLowerCase()));
+    this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.searchText.toLowerCase()));
     }
   
   onSearchTextEntered(searchValue : string){

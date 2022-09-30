@@ -11,12 +11,12 @@
     margin-top: 30px;
 }
 
-.page {
+/* .page {
 
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 
 .searchbar{
@@ -30,7 +30,7 @@
     background-color:aliceblue;
 } */
 
-.artists {
+/* .artists {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,7 +47,7 @@
 
 .btn {
     width: 20%
-}
+} */
     /* background-color: #7C00F8; */
 .votebtn{
     background-color: #7C00F8;
@@ -90,8 +90,8 @@
 
 }
 .search-results{
-    /* margin-top: 30px;
-    display:grid;
+    margin-top: 30px;
+    /* display:grid;
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center; */
 
