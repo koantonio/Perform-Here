@@ -11,6 +11,8 @@ import { PerformerFormComponent } from './performer-form/performer-form.componen
 import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchComponentComponent } from './search-component/search-component.component';
+//import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     LandingContentComponent,
     PerformerFormComponent,
     BrowsingContentComponent,
-    NavbarContentComponent
+    NavbarContentComponent,
+    SearchComponentComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
