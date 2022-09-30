@@ -11,12 +11,9 @@ import { PerformerFormComponent } from './performer-form/performer-form.componen
 import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { ProfileComponent } from './profile/profile.component';
-=======
 import { SearchComponentComponent } from './search-component/search-component.component';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
->>>>>>> 0cc05ff5e883aa578cb32f5b5ef87a77d279c502
 
 
 @NgModule({
@@ -29,11 +26,8 @@ import { SearchComponentComponent } from './search-component/search-component.co
     PerformerFormComponent,
     BrowsingContentComponent,
     NavbarContentComponent,
-<<<<<<< HEAD
     ProfileComponent
-=======
-    SearchComponentComponent
->>>>>>> 0cc05ff5e883aa578cb32f5b5ef87a77d279c502
+
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
