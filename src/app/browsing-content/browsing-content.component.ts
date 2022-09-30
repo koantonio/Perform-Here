@@ -13,25 +13,23 @@ import { Votes } from '../votes';
 })
 export class BrowsingContentComponent implements OnInit {
   artists : Artist[]= [];
-  enterSearchValue : string = "";
   searchText : string = "";
-   newArtists: Artist[] = [];
-  //constructor(private artistService:ArtistsService) { }
-
+  newArtists: Artist[] = [];
 
   constructor(private artistService: ArtistsService) {
-    this.artistService.getAllArtists().subscribe(artists=>{
-      this.artists=artists;
+    this.artistService.getAllArtists().subscribe(artists=> {
+      this.artists=artists
       this.newArtists = artists;
-      
     });
   }
 
   ngOnInit(): void {
+    
   }
+  
   updateArtists() {
     this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.searchText.toLowerCase()));
-    }
+  }
   
   onSearchTextEntered(searchValue : string){
     this.searchText = searchValue;
