@@ -53,8 +53,8 @@ export class SignInComponent implements OnInit {
 
 
         onSuccess: (result) => {
-
-          cognitoUser.getSession(function(err: any, session: any) {
+          var id: string = "Test";
+          cognitoUser.getSession((err: any, session: any) => {
             if (err) {
               console.error(err);
               return;
@@ -66,10 +66,10 @@ export class SignInComponent implements OnInit {
               alert(err.message || JSON.stringify(err));
               return;
             }
-            this.id = JSON.parse(result[0]).Value;
+            id = JSON.parse(result[0]).Value;
+            this.userService.setUserId(id);
+            this.router.navigate(['browse']);
           });
-          this.userService.setUserId(this.id);
-          this.router.navigate(['browse']);
         },
 
         onFailure: (err) => {

@@ -16,16 +16,18 @@ export class BrowsingContentComponent implements OnInit {
   artists : Artist[]= [];
   searchText : string = "";
   newArtists: Artist[] = [];
+  userId : string = "";
 
   constructor(private artistService: ArtistsService, private userService: UserService) {
     this.artistService.getAllArtists().subscribe(artists=> {
-      this.artists=artists
+      this.artists=artists;
       this.newArtists = artists;
     });
   }
 
   ngOnInit(): void {
-    console.log(this.userService.getUserId());
+    this.userId = this.userService.getUserId();
+    console.log("UserID:" + this.userId);
   }
   
   updateArtists() {

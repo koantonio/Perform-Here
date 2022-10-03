@@ -10,11 +10,11 @@ import {
 })
 export class UserService {
 
-  userId: String = "";
+  userId: string = "";
 
   constructor() { }
 
-  setUserId(id: String) {
+  setUserId(id: string) {
     this.userId = id;
   }
 
