@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   email_address: string = '';
   password: string = '';
-  id: string = "Test";
+  
 
   constructor(private router: Router, private userService: UserService) {}
 
@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
             }
           });
     
-          cognitoUser.getUserAttributes((err, result:any) => {
+          cognitoUser.getUserAttributes((err: any, result:any) => {
             if (err) {
               alert(err.message || JSON.stringify(err));
               return;

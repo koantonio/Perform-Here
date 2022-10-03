@@ -15,8 +15,8 @@ import { UserService } from "../user.service";
 export class BrowsingContentComponent implements OnInit {
   artists : Artist[]= [];
   searchText : string = "";
-  newArtists: Artist[] = [];
   userId : string = "";
+  newArtists: Artist[] = [];
 
   constructor(private artistService: ArtistsService, private userService: UserService) {
     this.artistService.getAllArtists().subscribe(artists=> {
