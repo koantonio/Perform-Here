@@ -69,7 +69,7 @@ export class SignInComponent implements OnInit {
             id = JSON.parse(result[0]).Value;
             this.userService.setUserId(id);
             this.router.navigate(['browse']);
-          })
+          });
         },
 
         onFailure: (err) => {
