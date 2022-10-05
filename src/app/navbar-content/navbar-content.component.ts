@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-navbar-content',
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NavbarContentComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +24,18 @@ export class NavbarContentComponent implements OnInit {
     let cognitoUser = userPool.getCurrentUser();
     console.log(cognitoUser);
     cognitoUser?.signOut();
+    this.userService.setUserId("");
     this.router.navigate(['signin']);
   }
+
+  profile() {
+    this.router.navigate(['profile']);
+  }
+
+  browsing() {
+    this.router.navigate(['browse']);
+  }
+
 
 
 }
