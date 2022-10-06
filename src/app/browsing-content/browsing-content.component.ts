@@ -6,6 +6,7 @@ import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
 import { Votes } from '../votes';
 import { UserService } from "../user.service";
+import { CognitoService } from '../cognito.service';
 
 @Component({
   selector: 'app-browsing-content',
@@ -18,7 +19,7 @@ export class BrowsingContentComponent implements OnInit {
   userId : string = "";
   newArtists: Artist[] = [];
 
-  constructor(private artistService: ArtistsService, private userService: UserService) {
+  constructor(private artistService: ArtistsService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
       this.newArtists = artists;
@@ -26,8 +27,6 @@ export class BrowsingContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = this.userService.getUserId();
-    console.log("UserID:" + this.userId);
   }
   
   updateArtists() {
