@@ -19,71 +19,45 @@
                 </div>
                 <h3>{{ artist.stageName }}</h3>
                 <p>{{ artist.artistBio }}</p>
-                <button class="votebtn text-light">Vote</button>
+                <div class="voteButton">
+                    <!-- <button [routerLink]="['/vote']"  class="votebtn text-light">Vote</button>-->
+
+
+                         <div class="container mt-5">
+                             <button type="button" class="votebtn text-light" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
+                             <div class="modal" id="myModal">
+                                 <div class="modal-dialog">
+                                     <div class="modal-content">
+                                         <div class="modal-header">
+                                             <h5 class="modal-title"></h5>
+
+                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                         </div>
+                                         <div class="modal-body">
+                                             <form>
+                                                 <div>
+                                                     <label class="form-label">State</label>
+                                                     <input type="text" class="form-control">
+                                                 </div>
+                                                 <div>
+                                                     <label class="form-label">City</label>
+                                                     <input type="text" class="form-control">
+                                                 </div>
+                                                 <br>
+                                                 <button type="submit" class="votebtn text-light">Purchase Vote</button>
+                                             </form>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         
+
+                 </div>
             </div>
         </div>
     </div>
-        <div class = "result-container">
-            <div class="search-results" *ngFor="let artist of artists">
-            <!-- <div class="artists text-white">
-                <div class="displayArtists" *ngFor="let artist of artists">
-                    <h1>{{artist.stageName}}</h1>
-                    <h1> {{artist.artistBio}}</h1>
-                </div>
 
-            </div> -->
-                <div class="browse-grid" *ngIf="searchText === ''||artist.stageName.toLowerCase().includes(searchText) || artist.stageName.toUpperCase().includes(searchText)" >
-                    <div class="artist-card">
-                        <div class="artist-card-body text-light">
-                            <div class="concert-img">
-                                <img class="concertImage" alt="app" src="/assets/concert2.webp"/>
-                            </div>
-                            <div class="artist-card-title">
-                                <h3>{{artist.stageName}}</h3>
-                            </div>
-                            <div class="artist-card-bio">
-                                <p>{{artist.artistBio}}</p>
-                            </div>
-                            <div class="voteButton">
-                               <!-- <button [routerLink]="['/vote']"  class="votebtn text-light">Vote</button>-->
-
-
-                                    <div class="container mt-5">
-                                        <button type="button" class="votebtn text-light" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
-                                        <div class="modal" id="myModal">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title"></h5>
-
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form>
-                                                            <div>
-                                                                <label class="form-label">State</label>
-                                                                <input type="text" class="form-control">
-                                                            </div>
-                                                            <div>
-                                                                <label class="form-label">City</label>
-                                                                <input type="text" class="form-control">
-                                                            </div>
-                                                            <br>
-                                                            <button type="submit" class="votebtn text-light">Purchase Vote</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 </div>
 <!--<div class="search">
     <input
