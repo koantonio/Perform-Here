@@ -1,17 +1,25 @@
-<app-navbar-content></app-navbar-content>
 <div class="page">
     <app-navbar-content></app-navbar-content>
-    <!-- <app-search-component (searchTextChanged)="onSearchTextEntered($event)"></app-search-component> -->
-    <div class="search">
-        <div class="search-container">
-            <div class="searchbar">
-                <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Search here"
-                [(ngModel)]="searchText"
-                (ngModelChange)="updateArtists()"
-                />
+  <div class="search">
+    <h1 class="title">Choose an artist</h1>
+    <div class="searchbar">
+        <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search here"
+          [(ngModel)]="searchText"
+          (ngModelChange)="updateArtists()"
+        />
+    </div>
+    <div class="search-results">
+        <div class="card-container" *ngFor="let artist of newArtists">
+            <div class="artist-card-body text-light">
+                <div class="concert-img">
+                    <img class="concertImage" alt="app" src="/assets/concert2.webp" />
+                </div>
+                <h3>{{ artist.stageName }}</h3>
+                <p>{{ artist.artistBio }}</p>
+                <button class="votebtn text-light">Vote</button>
             </div>
         </div>
     </div>
@@ -85,3 +93,4 @@
     />
     <button style='font-size:24px'>Button <i class='fas fa-search'></i></button>
         <i class="fas fa-search"></i> -->
+</div>

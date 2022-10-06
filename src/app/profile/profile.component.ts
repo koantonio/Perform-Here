@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Artist } from '../artist';
 import { ArtistsService } from '../artists.service';
 
+import { UserService } from '../user.service';
+ 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,7 +13,7 @@ export class ProfileComponent implements OnInit {
   artists : Artist[]= [];
   newArtists: Artist[] = [];
   
-  constructor(private artistService: ArtistsService) {
+  constructor(private artistService: ArtistsService, private userService: UserService) {
     this.artistService.getAllArtists().subscribe(artists=>{
       this.artists=artists;
       this.newArtists = artists;
@@ -19,7 +21,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
+
   ngOnInit(): void {
+    //console.log(this.userService.getUserId());
   }
 
 }

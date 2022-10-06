@@ -19,7 +19,6 @@ export class AuthService {
 
     var userPool = new CognitoUserPool(poolData);
     var cognitoUser = userPool.getCurrentUser();
-    
 
     if (cognitoUser != null) {
       

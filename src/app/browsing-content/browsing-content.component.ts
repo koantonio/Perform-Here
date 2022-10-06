@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
 import { Votes } from '../votes';
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-browsing-content',
@@ -13,25 +14,25 @@ import { Votes } from '../votes';
 })
 export class BrowsingContentComponent implements OnInit {
   artists : Artist[]= [];
-  enterSearchValue : string = "";
   searchText : string = "";
-   newArtists: Artist[] = [];
-  //constructor(private artistService:ArtistsService) { }
+  userId : string = "";
+  newArtists: Artist[] = [];
 
-
-  constructor(private artistService: ArtistsService) {
-    this.artistService.getAllArtists().subscribe(artists=>{
+  constructor(private artistService: ArtistsService, private userService: UserService) {
+    this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
       this.newArtists = artists;
-      
     });
   }
 
   ngOnInit(): void {
+    this.userId = this.userService.getUserId();
+    console.log("UserID:" + this.userId);
   }
+  
   updateArtists() {
     this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.searchText.toLowerCase()));
-    }
+  }
   
   onSearchTextEntered(searchValue : string){
     this.searchText = searchValue;

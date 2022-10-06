@@ -20,6 +20,7 @@ export class ArtistsService {
 
   addArtist(artist: Artist) {
     const body = {
+      "userID": artist.userID,
       "stageName": artist.stageName,
       "artistBio": artist.artistBio,
       "votes": artist.votes
