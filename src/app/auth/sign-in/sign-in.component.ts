@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  AuthenticationDetails,
-  CognitoUser,
-  CognitoUserPool,
-} from 'amazon-cognito-identity-js';
-import { environment } from 'src/environments/environment';
+import { IUser, CognitoService } from 'src/app/cognito.service';
 import { UserService } from '../../user.service';
 
 @Component({
@@ -15,45 +10,38 @@ import { UserService } from '../../user.service';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
-  isLoading: boolean = false;
+  
   email_address: string = '';
   password: string = '';
-  
+  loading: boolean;
+  user: IUser;
 
-  constructor(private router: Router, private userService: UserService) {}
-
-  ngOnInit(): void {
-    //this.dataService.broadcast('authSuccess',{auth:'successful'})
-
+  constructor(private router: Router, private userService: UserService, private cognitoService: CognitoService) {
+    this.loading = false;
+    this.user = {} as IUser;
   }
 
+  ngOnInit(): void {}
+
   onSignIn(form: NgForm) {
-    
+
+    this.user.email = this.email_address;
+    this.user.password = this.password;
 
     if (form.valid) {
-      this.isLoading = true;
-      console.log(this.email_address, this.password);
-      let authenticationDetails = new AuthenticationDetails({
-        Username: this.email_address,
-        Password: this.password,
+      this.loading = true;
+      this.cognitoService.signIn(this.user)
+      .then(() => {
+        this.router.navigate(['/browse']);
+      }).catch(() => {
+        this.loading = false;
       });
+    }
+  }
+}
 
-      let poolData = {
-        UserPoolId: 'us-west-2_kefXUvzNA', // Your user pool id here
-        ClientId: '7naup3g2ase11sfgcihln1dbct', // Your client id here
-      };
-
-      let userPool = new CognitoUserPool(poolData);
-      let userData = {
-        Username: this.email_address,
-        Pool: userPool,
-      };
-      var cognitoUser = new CognitoUser(userData);
-      cognitoUser.authenticateUser(authenticationDetails, {
-
-
-        onSuccess: (result) => {
-          var id: string = "Test";
+/*
+var id: string = "Test";
           cognitoUser.getSession((err: any, session: any) => {
             if (err) {
               console.error(err);
@@ -70,16 +58,4 @@ export class SignInComponent implements OnInit {
             this.userService.setUserId(id);
             this.router.navigate(['browse']);
           });
-        },
-
-        onFailure: (err) => {
-          alert(err.message || JSON.stringify(err));
-          this.isLoading = false;
-        },
-      });
-
-    } else {
-      console.log('invalid');
-    }
-  }
-}
+*/
