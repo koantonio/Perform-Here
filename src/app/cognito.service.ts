@@ -39,6 +39,10 @@ export class CognitoService {
       }
     });
   }
+
+  public async getUserAttributes() {
+    return await Auth.currentUserInfo();
+  }
   
   public confirmSignUp(user: IUser): Promise<any> {
     return Auth.confirmSignUp(user.email, user.code);
