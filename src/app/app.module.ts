@@ -13,6 +13,7 @@ import { NavbarContentComponent } from './navbar-content/navbar-content.componen
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
+import { VoteComponent } from './vote/vote.component';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
@@ -26,7 +27,8 @@ import { SearchComponentComponent } from './search-component/search-component.co
     PerformerFormComponent,
     BrowsingContentComponent,
     NavbarContentComponent,
-    ProfileComponent
+    ProfileComponent,
+    VoteComponent
 
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],

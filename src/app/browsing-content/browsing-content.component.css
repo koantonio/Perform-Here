@@ -54,7 +54,7 @@
 .votebtn{
     background-color: #7C00F8;
     border: none;
-    width: 100px;
+    width: 120px;
     height: 40px;
     border-radius: 0.35rem;
 }
@@ -110,3 +110,8 @@
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center;
 }
+
+.voteButton{
+    color: #333333;
+}
+
