@@ -105,23 +105,15 @@
     margin-right: 30px;
     margin-bottom: 30px;
     margin-top: 50px;
-    /* display: flex; */
-    /* flex-direction: rows; */
     justify-content: center;
     display: flex;
-    /* justify-content: space-around; */
     flex-wrap: wrap;
-    /* display: flex;
-    flex-direction: column; */
-    /* display: grid;
-    grid-template-columns: repeat(autofit, minmax(10rem, 20rem));
-    justify-content: center; */
 
 }
 
 .image-1{
     position: relative;
-    width: 400px;
+    width: 270px;
     margin: 10px;
     /* float: left; */
 }
@@ -166,18 +158,18 @@
 }
 
 .connect-image-title{
-    font-size: 2em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
 .connect-image-description{
-    font-size: 1.15em;
+    font-size: 1em;
     margin: 6px;
 }
 
 .image-2{
     position: relative;
-    width: 400px;
+    width: 270px;
     margin: 10px;
     /* float: left; */
 }
@@ -222,18 +214,18 @@
 }
 
 .voice-image-title{
-    font-size: 2em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
 .voice-image-description{
-    font-size: 1.15em;
+    font-size: 1em;
     margin: 6px;
 }
 
 .image-3{
     position: relative;
-    width: 400px;
+    width: 270px;
     margin: 10px;
     /* float: left; */
 }
@@ -277,18 +269,18 @@
 }
 
 .save-image-title{
-    font-size: 2em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
 .save-image-description{
-    font-size: 1.15em;
+    font-size: 1em;
     margin: 6px;
 }
 
 .image-4{
     position: relative;
-    width: 400px;
+    width: 270px;
     margin: 10px;
     /* float: left; */
 }
@@ -332,11 +324,11 @@
 }
 
 .attend-image-title{
-    font-size: 2em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
 .attend-image-description{
-    font-size: 1.15em;
+    font-size: 1em;
     margin: 6px;
 }
