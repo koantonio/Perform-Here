@@ -1,5 +1,5 @@
 <div class="page">
-  <div class="register vstack gap-1">
+  <div class="register vstack gap-1" *ngIf="!isConfirm">
     <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="card shadow-2-strong card-registration clearfix" novalidate>
       <h1>Sign up</h1>
 
@@ -128,5 +128,22 @@
     <div>
       <p class="login">Already have an account? <a [routerLink]="'/signin'">Log in</a></p>
     </div>
+  </div>
+
+  <!--Email Validation-->
+  <div class="register" *ngIf="isConfirm">
+    <form class="card shadow-2-strong card-registration clearfix">
+      <h1>Confirm Email</h1>
+      <div class="form-group">
+        <div>
+          <label for="code" class="confirm-label">Enter code sent to: <br> <p><small>{{Email?.value}}</small></p></label>
+          <input type="text" id="code" name="code" #code="ngModel" [(ngModel)]="user.code" class="form-control form-control-sm">
+        </div>
+      </div>
+      <button type="button" (click)="confirmSignUp()" class="btn btn-primary btn-lg btn-block" [disabled]="loading">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+        Confirm
+      </button>
+    </form>
   </div>
 </div>

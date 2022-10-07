@@ -75,22 +75,20 @@ export class SignUpComponent implements OnInit {
       .then(() => {
         this.loading = false;
         this.isConfirm = true;
-        this.router.navigate(['/signin']);
       }).catch(() => {
         this.loading = false;
       });   
     }
   }
 
-  /*
   public confirmSignUp(): void {
     this.loading = true;
     this.cognitoService.confirmSignUp(this.user)
     .then(() => {
-      this.router.navigate(['/signIn']);
+      this.router.navigate(['/signin']);
     }).catch(() => {
       this.loading = false;
     });
   }
-  */
+  
 }
