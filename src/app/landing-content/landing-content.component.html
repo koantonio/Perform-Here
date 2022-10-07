@@ -10,18 +10,27 @@
                 <div class="dynamic"><span class="red">festival</span></div>
             </div>
             <p class="descrip">Pick Where you want to see your favorite artists</p>
+            <!-- <button class="artist-fan-content" (click)="goToMission()">Scroll down to see what we have to offer</button> -->
         </div>
         <div class="circle">
             <img class="peopleImage" alt="app" src="/assets/landing-image.svg"/>
         </div>
+        <svg class="arrows" (click)="goToMission()">
+            <path class="a1" d="M0 0 L30 32 L60 0"></path>
+            <path class="a2" d="M0 20 L30 52 L60 20"></path>
+            <path class="a3" d="M0 40 L30 72 L60 40"></path>
+        </svg>
     </div>
 </div>
-<div class="mission">
-    <div class="image-1">
-        <img class="connect-image" alt="Connect" src="/assets/connect3-img.jpg">
-        <div class="connect-image-overlay connect-image-overlay--blur">
-            <div class="connect-image-title text-light">Connect</div>
-            <p class="connect-image-description text-light">
+
+<div class="mission" id="mission">
+    <h1 class="for-fans">See what we have to offer to fans everywhere:</h1>
+    <div class="info">
+    <div class="image-2">
+        <img class="voice-image" alt="Connect" src="/assets/connect3-img.jpg">
+        <div class="voice-image-overlay voice-image-overlay--blur">
+            <div class="voice-image-title text-light">Connect</div>
+            <p class="voice-image-description text-light">
                 We take the connection that you feel with your artists to the next level.
             </p>
         </div>
@@ -35,23 +44,24 @@
             </p>
         </div>
     </div>
-    <div class="image-3">
-        <img class="save-image" alt="Voice" src="/assets/save6-img.jpg">
-        <div class="save-image-overlay save-image-overlay--blur">
-            <div class="save-image-title text-light">Pay Less</div>
-            <p class="save-image-description text-light">
+    <div class="image-2">
+        <img class="voice-image" alt="Voice" src="/assets/save6-img.jpg">
+        <div class="voice-image-overlay voice-image-overlay--blur">
+            <div class="voice-image-title text-light">Pay Less</div>
+            <p class="voice-image-description text-light">
                 Pay less to see your artists more!
             </p>
         </div>
     </div>
-    <div class="image-4">
-        <img class="attend-image" alt="Voice" src="/assets/attend4-img.jpg">
-        <div class="attend-image-overlay attend-image-overlay--blur">
-            <div class="attend-image-title text-light">Attend</div>
-            <p class="attend-image-description text-light">
+    <div class="image-2">
+        <img class="voice-image" alt="Voice" src="/assets/attend4-img.jpg">
+        <div class="voice-image-overlay voice-image-overlay--blur">
+            <div class="voice-image-title text-light">Attend</div>
+            <p class="voice-image-description text-light">
                 It's time to attend your favorite artists' performances!
             </p>
         </div>
     </div>
+</div>
 </div>
 

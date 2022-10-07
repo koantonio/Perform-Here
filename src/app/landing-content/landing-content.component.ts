@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from "@angular/common";
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +10,11 @@ import { Router } from '@angular/router';
 export class LandingContentComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private scroller: ViewportScroller) { }
 
   ngOnInit(): void {
+  }
+  goToMission(){
+    this.scroller.scrollToAnchor("mission");
   }
 }
