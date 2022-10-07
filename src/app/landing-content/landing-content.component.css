@@ -1,13 +1,14 @@
 .lilShit {
-    background-color: #161616;
+    /* background-color: #161616; */
     display: flex;
     color: white;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .top {
-    background-color: #161616;
+    /* background-color: #161616; */
+    /* background-color: black; */
     width: 100vw;
     height: 10vh;
     display: flex;
@@ -16,15 +17,16 @@
 }
 
 .circle {
-    height: 400px;
-    width: 400px;
+    height: 450px;
+    width: 450px;
+    margin-top: 80px;
     border-radius: 50%;
     background-image: linear-gradient(165.23deg, rgba(255, 138, 0, 0.7) 15%, rgba(106, 35, 255, 0.3) 85%);;
 }
 
 .peopleImage {
-    height: 400px;
-    width: 400px;
+    height: 450px;
+    width: 450px;
 }
 
 .bottom {
@@ -58,7 +60,8 @@
 .dynamic span::after {
     content: "";
     position: absolute;
-    background: #161616;
+    /* background: #161616; */
+    background: black;
     left: 0;
     height: 100%;
     width: 100%;
