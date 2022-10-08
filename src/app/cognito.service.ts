@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import Amplify, { Auth } from 'aws-amplify';
+import { ArtistsService } from './artists.service';
+import { Artist } from './artist';
+import { User } from './user';
+import { UserService } from './user.service';
 
 export interface IUser {
   email: string;
@@ -17,7 +21,9 @@ export class CognitoService {
   
   private authenticationSubject: BehaviorSubject<any>;
 
-  constructor() {
+  userId: string = "";
+
+  constructor(private artistService: ArtistsService) {
     Amplify.configure({
       Auth: {
         userPoolId: 'us-west-2_kefXUvzNA',
@@ -36,6 +42,9 @@ export class CognitoService {
         name: user.firstName,
         family_name: user.lastName,
         email: user.email
+      },
+      autoSignIn: { // optional - enables auto sign in after user is confirmed
+        enabled: true,
       }
     });
   }
@@ -50,10 +59,15 @@ export class CognitoService {
   
 
   public signIn(user: IUser): Promise<any> {
+    this.userId = user.email;
     return Auth.signIn(user.email, user.password)
     .then(() => {
       this.authenticationSubject.next(true);
     });
+  }
+
+  public getEmail(): string {
+    return this.userId;
   }
 
   public signOut(): Promise<any> {

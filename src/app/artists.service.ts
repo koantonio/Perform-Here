@@ -10,6 +10,8 @@ import { ArtistForm } from './artistForm';
 })
 export class ArtistsService {
 
+  baseUrl: string = "http://localhost:8080/perfArtists/";
+
   postHeaders = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -20,27 +22,26 @@ export class ArtistsService {
 
   addArtist(artist: Artist) {
     const body = {
-      "userID": artist.userID,
+      "id": artist.id,
       "stageName": artist.stageName,
-      "artistBio": artist.artistBio,
-      "votes": artist.votes
+      "description": artist.description,
     }
-    return this.http.post("https://o6xu4u1o3b.execute-api.us-west-2.amazonaws.com/default/960476_post", body, this.postHeaders)
+    return this.http.post(this.baseUrl+"add", body, this.postHeaders)
     .pipe(
       catchError(this.handleError)
     );
   }
   
   getAllArtists():Observable<Artist[]> {
-    return this.http.get<Artist[]>("https://eyd4la9qa3.execute-api.us-west-2.amazonaws.com/default/960169_getTest")
+    return this.http.get<Artist[]>(this.baseUrl+"getAll")
     .pipe(
       catchError(this.handleError)
     );
   }
 
   getArtistById(id:string) {
-    return this.getAllArtists().pipe(
-      map(res => res.find(artist => artist.userID === id)),
+    return this.http.get<Artist>(this.baseUrl+id, this.postHeaders)
+    .pipe(
       catchError(this.handleError)
     );
   }

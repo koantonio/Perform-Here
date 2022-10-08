@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   artists : Artist[]= [];
   newArtists: Artist[] = [];
   userId: string = "";
+  isArtist: boolean = false;
   
   constructor(private artistService: ArtistsService, private userService: UserService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=>{
@@ -21,14 +22,24 @@ export class ProfileComponent implements OnInit {
       this.newArtists = artists;
       
     });
-
-    this.cognitoService.getUserAttributes().then(user => {
-      this.userId = user.attributes['sub'];
-      console.log(this.userId);
-    });
+    
   }
 
   ngOnInit(): void {
+    
+    this.userId = this.cognitoService.getEmail();
+    console.log(this.userId);
+    let a: Artist = new Artist("", "", "");
+    this.artistService.getArtistById(this.userId).subscribe(artist => {
+      console.log(artist);
+      if(artist == null) {
+
+      }
+      else {
+        this.isArtist = true;
+      }
+    });
+
   }
 
 }

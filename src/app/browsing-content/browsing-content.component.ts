@@ -19,10 +19,14 @@ export class BrowsingContentComponent implements OnInit {
   userId : string = "";
   newArtists: Artist[] = [];
 
+ // artistSB: any;
+  //let response=this.http.get("http://locahost:8080/perfartist");
+
   constructor(private artistService: ArtistsService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
       this.newArtists = artists;
+      console.log(artists);
     });
   }
 

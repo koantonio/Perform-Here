@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { IUser, CognitoService } from '../../cognito.service';
+import { User } from '../../user';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,6 +16,7 @@ export class SignUpComponent implements OnInit {
   isConfirm: boolean;
   user: IUser
   isArtist: boolean = false;
+  userId: string = "";
 
   signupForm: FormGroup = this.formBuilder.group({
     firstname: new FormControl('',[Validators.required]),
@@ -27,7 +30,7 @@ export class SignUpComponent implements OnInit {
   });
 
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private cognitoService: CognitoService) { 
+  constructor(private router: Router, private formBuilder: FormBuilder, private cognitoService: CognitoService, private userService: UserService) { 
     this.loading = false;
     this.isConfirm = false;
     this.user = {} as IUser;
@@ -36,7 +39,6 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
 
   setArtist(event: Event) {
     this.isArtist = (event.target as HTMLInputElement).checked;
@@ -73,13 +75,26 @@ export class SignUpComponent implements OnInit {
       this.loading = true;
       this.cognitoService.signUp(this.user)
       .then(() => {
+
         this.loading = false;
         this.isConfirm = true;
-        this.router.navigate(['/signin']);
+        
+        let u: User = new User(this.user.email, this.user.firstName, this.user.lastName);
+        this.userService.addUser(u).subscribe(user => console.log(user));
+        
+        if(this.isArtist) {
+          this.router.navigate(['/performer_form']);
+        }
+        else {
+          this.router.navigate(['/signin']);
+        }
+        
       }).catch(() => {
+        alert("Invalid Signup");
         this.loading = false;
-      });   
+      });
     }
+    
   }
 
   /*

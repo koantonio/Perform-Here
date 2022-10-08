@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/
 import { ArtistsService } from '../artists.service';
 import { ArtistForm } from '../artistForm';
 import { Router } from '@angular/router';
+import { Artist } from '../artist';
 
 @Component({
   selector: 'app-performer-form',
@@ -59,6 +60,12 @@ export class PerformerFormComponent implements OnInit {
                                                 this.managementemail?.value, 
                                                 this.phoneno?.value);
     this.artistService.addArtistForm(aform).subscribe(res => console.log(res));
+
+    let a: Artist = new Artist(this.accountemail?.value, this.stagename?.value, "noob");
+
+    this.artistService.addArtist(a).subscribe();
+    
+
     this.router.navigate(['/signin']);
   }
 
