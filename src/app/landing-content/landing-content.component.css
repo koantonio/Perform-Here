@@ -137,6 +137,8 @@
     text-shadow: 2px 2px 8px white;
     margin-left: 60px;
     margin-bottom: -10px;
+    margin-top: 40px;
+    /* padding: 10px; */
 }
 
 .image-2{
@@ -244,3 +246,20 @@
 	animation-delay:0s;
 	-webkit-animation-delay:0s; /* Safari 和 Chrome */
 }
+.info {
+    /* display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; */
+    grid-template-columns: repeat(auto-fit, 2fr);
+}
+
+.card-container {
+    margin: 0.5%;
+  }
+
+.artist-card-body-1 {
+    text-align: center;
+    background-color: #333333;
+    padding: 25px 50px 50px 50px;
+    border-radius: 0.5rem;
+  }
