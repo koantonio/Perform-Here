@@ -276,3 +276,7 @@ const locations = {
     ]
 
 }
+
+window.onload = function(){
+    const stateSelection = document.querySelector(".")
+}
