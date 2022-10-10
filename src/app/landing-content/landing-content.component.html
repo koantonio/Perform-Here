@@ -10,16 +10,16 @@
                 <div class="dynamic"><span class="red">festival</span></div>
             </div>
             <p class="descrip">Pick Where you want to see your favorite artists</p>
+            <svg class="arrows" (click)="goToMission()">
+                <path class="a1" d="M0 0 L30 32 L60 0"></path>
+                <path class="a2" d="M0 20 L30 52 L60 20"></path>
+                <path class="a3" d="M0 40 L30 72 L60 40"></path>
+            </svg>
             <!-- <button class="artist-fan-content" (click)="goToMission()">Scroll down to see what we have to offer</button> -->
         </div>
         <div class="circle">
             <img class="peopleImage" alt="app" src="/assets/landing-image.svg"/>
         </div>
-        <svg class="arrows" (click)="goToMission()">
-            <path class="a1" d="M0 0 L30 32 L60 0"></path>
-            <path class="a2" d="M0 20 L30 52 L60 20"></path>
-            <path class="a3" d="M0 40 L30 72 L60 40"></path>
-        </svg>
     </div>
 </div>
 
@@ -74,8 +74,8 @@
             </div>
             <div class="col-md-8 textStuff">
                 <div class="card-body">
-                    <div class="card-title"> See Other Artists </div>
-                    <p class="card-text">
+                    <div class="card-title text-light"> See Other Artists </div>
+                    <p class="card-text text-light">
                         If you're a fan of other artist, then we have some great news for you! We also provide the opportunity to artists to let other artists know where you want to see them now!
                     </p>
                 </div>
@@ -89,39 +89,13 @@
                 </div>
                 <div class="col-md-8 textStuf">
                     <div class="card-body">
-                        <div class="card-title"> See Your Demand </div>
-                        <p class="card-text">
+                        <div class="card-title text-light"> See Your Demand </div>
+                        <p class="card-text text-light">
                             We understand that planning a tour and picking cities can be long and stressful. We are here to make the process easier for you! Find out where your fans want to see you the most and plan your tour accordingly!
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    <!-- <div class="card demand-card">
-        <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-            <img class="img-fluid demandimage" alt="Demand" src="/assets/demand-img.jpg">
-            <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-            </a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title text-light"> See Your Demand </h5>
-            <p class="card-text text-light"> We understand that planning a tour and picking cities can be long and stressful. We are here to make the process easier for you! Find out where your fans want to see you the most and plan your tour accordingly!</p>
-            <button class="signUpButton" [routerLink]="'/signup'">Sign up</button>
-        </div>
-    </div>
-    <div class="card demand-card">
-        <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-            <img class="img-fluid demandimage" alt="Demand" src="/assets/attend1-img.jpg">
-            <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-            </a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title text-light"> See Other Artists</h5>
-            <p class="card-text text-light"> We also provide the opportunity to artists to let other artists know where you want to see them now!</p>
-            <button class="signUpButton" [routerLink]="'/signup'">Sign up</button>
-        </div>
-    </div> -->
 </div>
 

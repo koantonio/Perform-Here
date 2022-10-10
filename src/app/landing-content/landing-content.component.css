@@ -215,17 +215,15 @@
 .voice-image-description{
     font-size: 1em;
     margin: 6px;
+    text-align: center;
 }
 
 .arrows {
 	width: 60px;
 	height: 72px;
-	position: absolute;
-	left: 50%;
-	margin-left: -30px;
-	bottom: 20px;
+	position: relative;
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 }
 
 .arrows path {
@@ -270,7 +268,8 @@
 .demand-card{
     margin: 40px;
     text-align: center;
-    background-color: #ebdcfd;
+    /* background-color: #ebdcfd; */
+    background-color: #161616;
     padding: 25px 50px 50px 50px;
     border-radius: 0.5rem;
 }
