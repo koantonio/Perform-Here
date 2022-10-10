@@ -276,3 +276,10 @@ const locations = {
     ]
 
 }
+window.onload = selectionOptions;
+function selectionOptions(){
+    const stateSelection = document.querySelector("#state");
+    const citySelection = document.querySelector("#city");
+    // citySelection.disabled = true;
+}
+

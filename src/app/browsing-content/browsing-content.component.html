@@ -1,7 +1,7 @@
 <div class="page">
     <app-navbar-content></app-navbar-content>
   <div class="search">
-    <h1 class="title">Choose an artist</h1>
+    <h1 class="title text-light">Choose an artist</h1>
     <div class="searchbar">
         <input
           type="search"
@@ -35,16 +35,22 @@
                                          </div>
                                          <div class="modal-body">
                                              <form>
-                                                 <div>
+                                                <select id="state" size="1">
+                                                    <option value="" selected="selected">-- Select State --</option>
+                                                </select>
+                                                <select id="city" size="1">
+                                                    <option value="" selected="selected">-- Select City --</option>
+                                                </select>
+                                                 <!-- <div>
                                                      <label class="form-label">State</label>
                                                      <input type="text" class="form-control">
                                                  </div>
                                                  <div>
                                                      <label class="form-label">City</label>
                                                      <input type="text" class="form-control">
-                                                 </div>
+                                                 </div> -->
                                                  <br>
-                                                 <button type="submit" class="votebtn text-light">Purchase Vote</button>
+                                                 <button type="submit" class="votebtn text-light" (click)="initializePayment(20)">Purchase Vote</button>
                                              </form>
                                          </div>
                                      </div>
