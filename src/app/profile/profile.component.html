@@ -1,10 +1,9 @@
-
 <div>
     <app-navbar-content></app-navbar-content>
 </div>
 <br><br><br><br><br>
 
-    <h3>Edit Explore Card</h3>
+    <h3 *ngIf="isArtist">Edit Explore Card</h3>
     <div class="container">
       <form >
 
@@ -22,7 +21,7 @@
           <label for="subject">My Bio</label>
         </div>
         <div class="col-75" *ngFor="let bio of artists">
-          <textarea id="bio" name="myBio" placeholder={{bio.artistBio}} style="height:200px"></textarea>
+          <textarea id="bio" name="myBio" placeholder={{bio.description}} style="height:200px"></textarea>
         </div>
       </div>
       <br>

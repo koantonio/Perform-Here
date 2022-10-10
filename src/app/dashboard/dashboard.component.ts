@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   addArtist() {
-    let artist: Artist = new Artist("1", "bobby", "I am an artist", [new Votes("sf", 10), new Votes("nj", 0)]);
+    let artist: Artist = new Artist("1", "bobby", "I am an artist");
     this.artistService.addArtist(artist).subscribe(res => console.log(res));
   }
 
