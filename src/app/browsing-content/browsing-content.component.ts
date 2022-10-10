@@ -19,6 +19,7 @@ export class BrowsingContentComponent implements OnInit {
   searchText : string = "";
   userId : string = "";
   newArtists: Artist[] = [];
+  paymentHandler: any = null;
   constructor(private artistService: ArtistsService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
@@ -28,7 +29,7 @@ export class BrowsingContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+    this.invokeStripe();
   }
   
   updateArtists() {
@@ -39,6 +40,42 @@ export class BrowsingContentComponent implements OnInit {
     this.searchText = searchValue;
     console.log(this.searchText);
    }
+
+
+   initializePayment(amount: number) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51LrEjvEnOsQjjv2UZmdKyfpdTuWxVJUtdWH1qdJaIvMvUdfol2tVMxYweZDQRL9HKC3ng0ahvSKnHNFHc9DVxNKE00hWeuJEdk',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log({stripeToken})
+        // alert('Stripe token generated!');
+      }
+    });
+  
+    paymentHandler.open({
+      amount: amount * 100
+    });
+  }
+  
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51LrEjvEnOsQjjv2UZmdKyfpdTuWxVJUtdWH1qdJaIvMvUdfol2tVMxYweZDQRL9HKC3ng0ahvSKnHNFHc9DVxNKE00hWeuJEdk',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken)
+            alert('Payment has been successfull!');
+          }
+        });
+      }
+      window.document.body.appendChild(script);
+    }
+  }
 
 
 }
