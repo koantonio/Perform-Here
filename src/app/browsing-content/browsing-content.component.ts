@@ -8,6 +8,7 @@ import { Votes } from '../votes';
 import { UserService } from "../user.service";
 import { CognitoService } from '../cognito.service';
 
+// declare function selectionOptions(): void;
 @Component({
   selector: 'app-browsing-content',
   templateUrl: './browsing-content.component.html',
@@ -18,15 +19,16 @@ export class BrowsingContentComponent implements OnInit {
   searchText : string = "";
   userId : string = "";
   newArtists: Artist[] = [];
-
   constructor(private artistService: ArtistsService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
       this.newArtists = artists;
     });
+    // selectionOptions();
   }
 
   ngOnInit(): void {
+  
   }
   
   updateArtists() {
