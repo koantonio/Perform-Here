@@ -82,12 +82,18 @@ export class SignUpComponent implements OnInit {
         let u: User = new User(this.user.email, this.user.firstName, this.user.lastName);
         this.userService.addUser(u).subscribe(user => console.log(user));
         
-      }).catch(() => {
-        alert("Invalid Signup");
+      }).catch((error) => {
+        alert(error);
         this.loading = false;
       });
     }
-    
+    else {
+      if(this.confirmpassword?.value !== this.Password?.value) {
+        alert("Passwords must match!");
+      }
+      else
+        alert("Invalid Signup information");
+    }
   }
 
   public confirmSignUp(): void {
