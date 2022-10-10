@@ -74,3 +74,7 @@ input.text{
     font-style: italic;
     font-size: x-small;
 }
+
+.confirm-label p {
+    color: #7C00F8;
+}

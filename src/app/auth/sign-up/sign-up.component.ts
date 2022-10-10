@@ -82,13 +82,6 @@ export class SignUpComponent implements OnInit {
         let u: User = new User(this.user.email, this.user.firstName, this.user.lastName);
         this.userService.addUser(u).subscribe(user => console.log(user));
         
-        if(this.isArtist) {
-          this.router.navigate(['/performer_form']);
-        }
-        else {
-          this.router.navigate(['/signin']);
-        }
-        
       }).catch(() => {
         alert("Invalid Signup");
         this.loading = false;
@@ -97,15 +90,19 @@ export class SignUpComponent implements OnInit {
     
   }
 
-  /*
   public confirmSignUp(): void {
     this.loading = true;
     this.cognitoService.confirmSignUp(this.user)
     .then(() => {
-      this.router.navigate(['/signIn']);
+      if(this.isArtist) {
+        this.router.navigate(['/performer_form']);
+      }
+      else {
+        this.router.navigate(['/signin']);
+      }
     }).catch(() => {
       this.loading = false;
     });
   }
-  */
+  
 }
