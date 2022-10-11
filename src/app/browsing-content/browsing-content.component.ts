@@ -53,7 +53,7 @@ export class BrowsingContentComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log({stripeToken})
-        // alert('Stripe token generated!');
+        alert('Stripe token generated!');
       }
     });
   
