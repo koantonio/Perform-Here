@@ -63,7 +63,7 @@ export class CognitoService implements CanActivate{
     return Auth.confirmSignUp(user.email, user.code);
   }
   
-
+  //setting user_id to email so email becomes primary key
   public signIn(user: IUser): Promise<any> {
     this.userId = user.email;
     return Auth.signIn(user.email, user.password)

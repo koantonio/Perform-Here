@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
   email_address: string = '';
   password: string = '';
   loading: boolean;
-  user: IUser;
+  user: IUser; //variable to get email of the artist logging in
 
   constructor(private router: Router, private userService: UserService, private cognitoService: CognitoService) {
     this.loading = false;
