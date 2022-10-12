@@ -11,6 +11,7 @@ import { BrowsingContentComponent } from './browsing-content/browsing-content.co
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VoteComponent } from './vote/vote.component';
+import { CognitoService } from './cognito.service';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:LandingContentComponent },
@@ -19,21 +20,21 @@ const routes: Routes = [
   { 
     path: 'browse',
     component: BrowsingContentComponent,
-    canActivate:[AuthGuard],
+    canActivate:[CognitoService],
   },
   { 
     path: 'profile', 
     component: ProfileComponent,
-    canActivate:[AuthGuard],
+    canActivate:[CognitoService],
   },
   { path: 'vote',
     component: VoteComponent,
-    canActivate:[AuthGuard],
+    canActivate:[CognitoService],
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    canActivate: [CognitoService],
   },
   { path: 'performer_form', component: PerformerFormComponent },
 ];

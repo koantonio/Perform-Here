@@ -7,6 +7,7 @@ import { Artist } from './artist';
 import { User } from './user';
 import { UserService } from './user.service';
 import { from as fromPromise, Observable, map, tap } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
 export interface IUser {
   email: string;
@@ -19,7 +20,7 @@ export interface IUser {
 @Injectable({
   providedIn: 'root',
 })
-export class CognitoService {
+export class CognitoService implements CanActivate{
 
   public authSubject = new BehaviorSubject<boolean>(false);
   
@@ -28,7 +29,7 @@ export class CognitoService {
 
   userId: string = "";
 
-  constructor(private artistService: ArtistsService) {
+  constructor(private router: Router, private artistService: ArtistsService) {
     Amplify.configure({
       Auth: {
         userPoolId: 'us-west-2_kefXUvzNA',
@@ -83,7 +84,6 @@ export class CognitoService {
     });
   }
 
-  /*
   public isAuthenticated(): Promise<boolean> {
     if (this.authenticationSubject.value) {
       return Promise.resolve(true);
@@ -100,24 +100,20 @@ export class CognitoService {
       });
     }
   }
-  */
 
-  
-  async isAuthenticated(): Promise<boolean> {
-    await Auth.currentUserInfo().then(
-      user => {
-        if(user){
-          this.isAuth = true;
-          
-        }else {
-          this.isAuth = false;
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      return this.isAuthenticated().then(result => {
+        if(result) {
+          return true;
         }
-      }
-    );
-    console.log(this.isAuth);
-    return this.isAuth;
+        else {
+          this.router.navigate(['/signin']);
+          return false;
+        }
+      });
   }
-  
   
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
