@@ -33,7 +33,7 @@ export class ArtistsService {
   }
   
   getAllArtists():Observable<Artist[]> {
-    return this.http.get<Artist[]>(this.baseUrl+"getAll")
+    return this.http.get<Artist[]>(this.baseUrl+"all")
     .pipe(
       catchError(this.handleError)
     );
@@ -66,4 +66,5 @@ export class ArtistsService {
       catchError(this.handleError)
     );
   }
+  
 }

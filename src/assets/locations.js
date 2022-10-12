@@ -1,12 +1,14 @@
-const locations = {
-    "Alabama":[
+export const locations = {
+    state: {
+        Alabama:[
         "Huntsville",
         "Montgomery",
         "Birmingham",
         "Mobile"
     ],
-    "Alaska": [
-        "Anchorage"
+    
+        "Alaska": [
+            "Anchorage"
     ],
     "Arizona": [
         "Pheonix",
@@ -274,12 +276,16 @@ const locations = {
         "Milwaukee",
         "Madison"
     ]
-
+    }
 }
 window.onload = selectionOptions;
 function selectionOptions(){
     const stateSelection = document.querySelector("#state");
     const citySelection = document.querySelector("#city");
-    // citySelection.disabled = true;
+    citySelection.disabled = true;
+    for(let state in locations[locations.value]){
+        stateSelection.options[stateSelection.options.length] =  new Option(state, state);
+    }
+
 }
 
