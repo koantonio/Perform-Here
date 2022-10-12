@@ -10,6 +10,7 @@ import { ArtistForm } from './artistForm';
 })
 export class ArtistsService {
 
+  //connecting to springboot
   baseUrl: string = "http://localhost:8080/perfArtists/";
 
   postHeaders = {
@@ -26,6 +27,7 @@ export class ArtistsService {
       "stageName": artist.stageName,
       "description": artist.description,
     }
+    //adding attributes to spring boot artist table
     return this.http.post(this.baseUrl+"add", body, this.postHeaders)
     .pipe(
       catchError(this.handleError)
@@ -38,7 +40,7 @@ export class ArtistsService {
       catchError(this.handleError)
     );
   }
-
+  
   getArtistById(id:string) {
     return this.http.get<Artist>(this.baseUrl+id, this.postHeaders)
     .pipe(

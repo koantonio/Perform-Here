@@ -4,15 +4,15 @@
 <br><br><br><br><br>
 
     <h3 *ngIf="isArtist">Edit Explore Card</h3>
-    <div class="container">
+    <div *ngIf="isArtist" class="container">
       <form >
 
       <div class="row">
         <div class="col-25">
           <label for="fname">Stage Name</label>
         </div>
-        <div class="col-75" *ngFor="let artist of artists">
-          <input type="text" id="sname" name="stageName" placeholder={{artist.stageName}}>
+        <div class="col-75">
+          <input type="text" id="sname" name="stageName" placeholder={{a.stageName}} [(ngModel)]="a.stageName">
         </div>
       </div>
 
@@ -20,21 +20,21 @@
         <div class="col-25">
           <label for="subject">My Bio</label>
         </div>
-        <div class="col-75" *ngFor="let bio of artists">
-          <textarea id="bio" name="myBio" placeholder={{bio.description}} style="height:200px"></textarea>
+        <div class="col-75">
+          <textarea id="bio" name="myBio" placeholder={{a.description}} [(ngModel)]="a.description" style="height:200px"></textarea>
         </div>
       </div>
       <br>
 
       <div class="row">
-        <input type="submit" value="Update">
+        <button type="submit" value="Update" (click)="updateArtist()">Update</button>
       </div>
       </form>
     </div>
 
     <br>
     <h3>Stats Bar</h3>
-    <p >display votes for each location here</p>
+    <p>display votes for each location here</p>
     <br>
     <h3>Your Votes</h3>
     <p>their purchases go here</p>

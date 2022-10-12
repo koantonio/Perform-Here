@@ -61,7 +61,8 @@ export class PerformerFormComponent implements OnInit {
                                                 this.phoneno?.value);
     this.artistService.addArtistForm(aform).subscribe(res => console.log(res));
 
-    let a: Artist = new Artist(this.accountemail?.value, this.stagename?.value, "noob");
+    //setting a default bio -edited
+    let a: Artist = new Artist(this.accountemail?.value, this.stagename?.value, "Hey there! My name is"+this.stagename?.value);
 
     this.artistService.addArtist(a).subscribe();
     

@@ -4,7 +4,7 @@ import { ArtistsService } from '../artists.service';
 import { CognitoService } from '../cognito.service';
 
 import { UserService } from '../user.service';
- 
+var name:string;
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -15,7 +15,10 @@ export class ProfileComponent implements OnInit {
   newArtists: Artist[] = [];
   userId: string = "";
   isArtist: boolean = false;
-  
+  a: Artist = new Artist("", "", "");
+
+
+  //initializing artist and newArtist arrays
   constructor(private artistService: ArtistsService, private userService: UserService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=>{
       this.artists=artists;
@@ -25,21 +28,28 @@ export class ProfileComponent implements OnInit {
     
   }
 
+  //grabs users email
   ngOnInit(): void {
-    
+
     this.userId = this.cognitoService.getEmail();
     console.log(this.userId);
-    let a: Artist = new Artist("", "", "");
     this.artistService.getArtistById(this.userId).subscribe(artist => {
-      console.log(artist);
+      console.log(artist);//prints out current logins email
+      
       if(artist == null) {
 
       }
       else {
         this.isArtist = true;
+        this.a=artist;
       }
     });
-
+   
   }
+
+  updateArtist() {
+  this.artistService.addArtist(this.a).subscribe( res=> console.log(res));
+  }
+
 
 }
