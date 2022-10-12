@@ -7,8 +7,10 @@ import { Artist } from '../artist';
 import { Votes } from '../votes';
 import { UserService } from "../user.service";
 import { CognitoService } from '../cognito.service';
+import { locations } from 'src/assets/locations';
+import { state } from '@angular/animations';
+import { LocationsService } from '../locations.service';
 
-// declare function selectionOptions(): void;
 @Component({
   selector: 'app-browsing-content',
   templateUrl: './browsing-content.component.html',
@@ -19,24 +21,30 @@ export class BrowsingContentComponent implements OnInit {
   searchText : string = "";
   userId : string = "";
   newArtists: Artist[] = [];
+  states: any =[];
+  cities : any = [];
 
  // artistSB: any;
   //let response=this.http.get("http://locahost:8080/perfartist");
 
   paymentHandler: any = null;
-  constructor(private artistService: ArtistsService, private cognitoService: CognitoService) {
+  constructor(private artistService: ArtistsService, private cognitoService: CognitoService, private locationService : LocationsService) {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
       this.newArtists = artists;
       console.log(artists);
     });
-    // selectionOptions();
+    // console.log(locations.state);
   }
 
   ngOnInit(): void {
     this.invokeStripe();
+    this.states = this.locationService.states();
   }
   
+  onSelect(states : any){
+    this.cities = this.locationService.cities().filter(e => e.id == states.target.value);
+  }
   updateArtists() {
     this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.searchText.toLowerCase()));
   }
@@ -53,7 +61,7 @@ export class BrowsingContentComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log({stripeToken})
-        // alert('Stripe token generated!');
+        alert('Stripe token generated!');
       }
     });
   

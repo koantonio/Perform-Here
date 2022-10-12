@@ -56,6 +56,7 @@
 
   .card-container {
     margin: 0.5%;
+    display: flex;
   }
 
 .concertImage {
@@ -91,6 +92,7 @@
 }
 .search-results{
     margin-top: 30px;
+    display: flex;
     /* display:grid;
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center; */
