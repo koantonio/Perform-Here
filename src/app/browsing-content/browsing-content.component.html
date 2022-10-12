@@ -35,12 +35,20 @@
                                          </div>
                                          <div class="modal-body">
                                              <form>
-                                                <select id="state" size="1">
+                                                <select (change)="onSelect($event)">
+                                                    <option>Select State</option>
+                                                    <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
+                                                </select>
+                                                <select>
+                                                    <option>Select City</option>
+                                                    <option *ngFor="let city of cities">{{city.name}}</option>
+                                                </select>
+                                                <!-- <select id="state" size="1">
                                                     <option value="" selected="selected">-- Select State --</option>
                                                 </select>
                                                 <select id="city" size="1">
                                                     <option value="" selected="selected">-- Select City --</option>
-                                                </select>
+                                                </select> -->
                                                  <!-- <div>
                                                      <label class="form-label">State</label>
                                                      <input type="text" class="form-control">
