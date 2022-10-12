@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import Amplify, { Auth } from 'aws-amplify';
 import { ArtistsService } from './artists.service';
 import { Artist } from './artist';
 import { User } from './user';
 import { UserService } from './user.service';
+import { from as fromPromise, Observable, map, tap } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
 export interface IUser {
   email: string;
@@ -17,13 +20,16 @@ export interface IUser {
 @Injectable({
   providedIn: 'root',
 })
-export class CognitoService {
+export class CognitoService implements CanActivate{
+
+  public authSubject = new BehaviorSubject<boolean>(false);
   
   private authenticationSubject: BehaviorSubject<any>;
+  public isAuth: boolean = false;
 
   userId: string = "";
 
-  constructor(private artistService: ArtistsService) {
+  constructor(private router: Router, private artistService: ArtistsService) {
     Amplify.configure({
       Auth: {
         userPoolId: 'us-west-2_kefXUvzNA',
@@ -74,6 +80,7 @@ export class CognitoService {
     return Auth.signOut()
     .then(() => {
       this.authenticationSubject.next(false);
+      this.isAuth = false;
     });
   }
 
@@ -94,6 +101,20 @@ export class CognitoService {
     }
   }
 
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      return this.isAuthenticated().then(result => {
+        if(result) {
+          return true;
+        }
+        else {
+          this.router.navigate(['/signin']);
+          return false;
+        }
+      });
+  }
+  
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
   }
