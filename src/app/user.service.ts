@@ -16,7 +16,7 @@ export class UserService {
   };
 
   userId: string = "";
-  baseUrl: string = "http://localhost:8080/perfUsers/";
+  baseUrl: string = "http://960169performhereapi-env.eba-yairqaej.us-west-2.elasticbeanstalk.com/";
 
   constructor(private http:HttpClient) { }
 

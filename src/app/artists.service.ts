@@ -11,7 +11,7 @@ import { ArtistForm } from './artistForm';
 export class ArtistsService {
 
   //connecting to springboot
-  baseUrl: string = "http://localhost:8080/perfArtists/";
+  baseUrl: string = "http://960169performhereapi-env.eba-yairqaej.us-west-2.elasticbeanstalk.com/perfArtists/";
 
   postHeaders = {
     headers: new HttpHeaders({
