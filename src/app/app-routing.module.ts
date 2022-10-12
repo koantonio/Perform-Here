@@ -16,9 +16,20 @@ const routes: Routes = [
   { path: 'home', component:LandingContentComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
-  {path: 'browse', component: BrowsingContentComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'vote', component: VoteComponent},
+  { 
+    path: 'browse',
+    component: BrowsingContentComponent,
+    canActivate:[AuthGuard],
+  },
+  { 
+    path: 'profile', 
+    component: ProfileComponent,
+    canActivate:[AuthGuard],
+  },
+  { path: 'vote',
+    component: VoteComponent,
+    canActivate:[AuthGuard],
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,

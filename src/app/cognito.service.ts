@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import Amplify, { Auth } from 'aws-amplify';
 import { ArtistsService } from './artists.service';
 import { Artist } from './artist';
 import { User } from './user';
 import { UserService } from './user.service';
+import { from as fromPromise, Observable, map, tap } from 'rxjs';
 
 export interface IUser {
   email: string;
@@ -18,8 +20,11 @@ export interface IUser {
   providedIn: 'root',
 })
 export class CognitoService {
+
+  public authSubject = new BehaviorSubject<boolean>(false);
   
   private authenticationSubject: BehaviorSubject<any>;
+  public isAuth: boolean = false;
 
   userId: string = "";
 
@@ -74,9 +79,11 @@ export class CognitoService {
     return Auth.signOut()
     .then(() => {
       this.authenticationSubject.next(false);
+      this.isAuth = false;
     });
   }
 
+  /*
   public isAuthenticated(): Promise<boolean> {
     if (this.authenticationSubject.value) {
       return Promise.resolve(true);
@@ -93,7 +100,25 @@ export class CognitoService {
       });
     }
   }
+  */
 
+  
+  async isAuthenticated(): Promise<boolean> {
+    await Auth.currentUserInfo().then(
+      user => {
+        if(user){
+          this.isAuth = true;
+          
+        }else {
+          this.isAuth = false;
+        }
+      }
+    );
+    console.log(this.isAuth);
+    return this.isAuth;
+  }
+  
+  
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
   }
