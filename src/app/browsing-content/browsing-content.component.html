@@ -35,20 +35,14 @@
                                          </div>
                                          <div class="modal-body">
                                              <form>
-                                                <select id="state" size="1">
-                                                    <option value="" selected="selected">-- Select State --</option>
+                                                <select (change)="onSelect($event)">
+                                                    <option>Select State</option>
+                                                    <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
                                                 </select>
-                                                <select id="city" size="1">
-                                                    <option value="" selected="selected">-- Select City --</option>
+                                                <select>
+                                                    <option>Select City</option>
+                                                    <option *ngFor="let city of cities">{{city.name}}</option>
                                                 </select>
-                                                 <!-- <div>
-                                                     <label class="form-label">State</label>
-                                                     <input type="text" class="form-control">
-                                                 </div>
-                                                 <div>
-                                                     <label class="form-label">City</label>
-                                                     <input type="text" class="form-control">
-                                                 </div> -->
                                                  <br>
                                                  <button type="submit" class="votebtn text-light" (click)="initializePayment(20)">Purchase Vote</button>
                                              </form>

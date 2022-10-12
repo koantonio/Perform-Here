@@ -227,9 +227,9 @@
 }
 
 .arrows path {
-	stroke: #7C00F8;
+	stroke: #FF6565;
 	fill: transparent;
-	stroke-width: 1px;	
+	stroke-width: 3px;	
 	animation: arrow 2s infinite;
 	-webkit-animation: arrow 2s infinite; 
 }
@@ -277,8 +277,13 @@
 .card-title{
     font-size: 25px;
     font-weight: bold;
-    align-items:center
+    align-items:center;
+    color: #FF6565;
 }
+
+/* .card-text{
+    color: #FF6565;
+} */
 
 .demandimage{
     margin: -15px;
