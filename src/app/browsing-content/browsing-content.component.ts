@@ -25,9 +25,6 @@ export class BrowsingContentComponent implements OnInit {
   states: any =[];
   cities : any = [];
 
- // artistSB: any;
-  //let response=this.http.get("http://locahost:8080/perfartist");
-
   paymentHandler: any = null;
   constructor(private router: Router, private artistService: ArtistsService, private cognitoService: CognitoService, private locationService : LocationsService) {
     this.artistService.getAllArtists().subscribe(artists=> {
@@ -38,7 +35,6 @@ export class BrowsingContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.invokeStripe();
     this.states = this.locationService.states();
   }
   
@@ -56,53 +52,6 @@ export class BrowsingContentComponent implements OnInit {
    purchase(){
     this.router.navigate(['purchase']);
    }
-
-
-  //  initializePayment(amount: number) {
-  //   const paymentHandler = (<any>window).StripeCheckout.configure({
-  //     key: 'pk_test_51LrEjvEnOsQjjv2UZmdKyfpdTuWxVJUtdWH1qdJaIvMvUdfol2tVMxYweZDQRL9HKC3ng0ahvSKnHNFHc9DVxNKE00hWeuJEdk',
-  //     locale: 'auto',
-  //     token: function (stripeToken: any) {
-  //       console.log({stripeToken})
-  //       alert('Stripe token generated!');
-  //     }
-  //   });
-    
-    // const paymentstripe = (stripeToken: any) => {
-    //   this.checkout.makePayment(stripeToken).subscribe((data: any) => {
-    //     console.log(data);
-    //     if (data.data === "success") {
-    //       this.success = true
-    //     }
-    //     else {
-    //       this.failure = true
-    //     }
-    //   });
-    // };
-  //   paymentHandler.open({
-  //     amount: amount * 100
-  //   });
-  // }
-  
-  // invokeStripe() {
-  //   if(!window.document.getElementById('stripe-script')) {
-  //     const script = window.document.createElement("script");
-  //     script.id = "stripe-script";
-  //     script.type = "text/javascript";
-  //     script.src = "https://checkout.stripe.com/checkout.js";
-  //     script.onload = () => {
-  //       this.paymentHandler = (<any>window).StripeCheckout.configure({
-  //         key: 'pk_test_51LrEjvEnOsQjjv2UZmdKyfpdTuWxVJUtdWH1qdJaIvMvUdfol2tVMxYweZDQRL9HKC3ng0ahvSKnHNFHc9DVxNKE00hWeuJEdk',
-  //         locale: 'auto',
-  //         token: function (stripeToken: any) {
-  //           console.log(stripeToken)
-  //           alert('Payment has been successfull!');
-  //         }
-  //       });
-  //     }
-  //     window.document.body.appendChild(script);
-  //   }
-  // }
   title = 'angular-stripe';
   priceId = 'price_1LsVlNEnOsQjjv2USBd9xYtq';
   product = {
@@ -113,22 +62,15 @@ export class BrowsingContentComponent implements OnInit {
   stripePromise = loadStripe(environment.stripe_key);
 
   async checkout() {
-    // Call your backend to create the Checkout session.
-
-    // When the customer clicks on the button, redirect them to Checkout.
     const stripe = await this.stripePromise;
     if(stripe != null) {
       const {error}  = await stripe.redirectToCheckout({
         mode: 'payment',
         lineItems: [{ price: this.priceId, quantity: this.quantity }],
         successUrl: `http://localhost:4200/success`,
-        cancelUrl: `http://localhost:4200/failure`,
+        cancelUrl: `http://localhost:4200/browse`,
       });
     }
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `error.message`.
-
   }
 
 }
