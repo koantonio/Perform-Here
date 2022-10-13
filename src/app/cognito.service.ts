@@ -115,6 +115,13 @@ export class CognitoService implements CanActivate{
       });
   }
   
+  public passwordReset() {
+    Auth.currentAuthenticatedUser()
+    .then(user => {
+      return Auth.forgotPassword
+    })
+  }
+
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
   }
