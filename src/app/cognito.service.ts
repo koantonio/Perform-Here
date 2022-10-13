@@ -65,15 +65,15 @@ export class CognitoService implements CanActivate{
   
   //setting user_id to email so email becomes primary key
   public signIn(user: IUser): Promise<any> {
-    this.userId = user.email;
+    localStorage.setItem('userId', user.email);
     return Auth.signIn(user.email, user.password)
     .then(() => {
       this.authenticationSubject.next(true);
     });
   }
 
-  public getEmail(): string {
-    return this.userId;
+  public getEmail(): string | null {
+    return localStorage.getItem('userId');
   }
 
   public signOut(): Promise<any> {
