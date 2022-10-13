@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { VoteComponent } from './vote/vote.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
@@ -28,7 +30,9 @@ import { VoteComponent } from './vote/vote.component';
     BrowsingContentComponent,
     NavbarContentComponent,
     ProfileComponent,
-    VoteComponent
+    VoteComponent,
+    SuccessComponent,
+    FailureComponent
 
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],

@@ -12,6 +12,8 @@ import { NavbarContentComponent } from './navbar-content/navbar-content.componen
 import { ProfileComponent } from './profile/profile.component';
 import { VoteComponent } from './vote/vote.component';
 import { CognitoService } from './cognito.service';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:LandingContentComponent },
@@ -36,7 +38,25 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [CognitoService],
   },
-  { path: 'performer_form', component: PerformerFormComponent },
+  { 
+    path: 'performer_form', 
+    component: PerformerFormComponent
+  },
+  {
+    path: 'purchase',
+    component: VoteComponent,
+    canActivate: [CognitoService],
+  },
+  {
+    path: 'success',
+    component: SuccessComponent,
+    canActivate: [CognitoService]
+  },
+  {
+    path: 'failure',
+    component: FailureComponent,
+    canActivate: [CognitoService]
+  }
 ];
 
 @NgModule({
