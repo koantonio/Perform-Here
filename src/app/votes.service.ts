@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { ArtistsService } from './artists.service';
 import { CognitoService } from './cognito.service';
 import { Votes } from './votes';
 
@@ -16,11 +17,18 @@ export class VotesService {
     })
   };
 
-  constructor(private http:HttpClient, private cognitoService:CognitoService) { }
+  constructor(private http:HttpClient, private cognitoService:CognitoService, private artistService: ArtistsService) { }
 
   getVotesByUser(): Observable<Votes[]> {
     let userId = this.cognitoService.getEmail();
-    return this.http.get<Votes[]>(this.baseUrl+userId)
+    return this.http.get<Votes[]>(this.baseUrl+"user/"+userId)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getVotesForArtist(stageName: string): Observable<Votes[]> {   
+    return this.http.get<Votes[]>(this.baseUrl+"artist/"+stageName)
     .pipe(
       catchError(this.handleError)
     );
