@@ -19,8 +19,7 @@ export class VotesService {
 
   constructor(private http:HttpClient, private cognitoService:CognitoService, private artistService: ArtistsService) { }
 
-  getVotesByUser(): Observable<Votes[]> {
-    let userId = this.cognitoService.getEmail();
+  getVotesByUser(userId: string | null): Observable<Votes[]> {
     return this.http.get<Votes[]>(this.baseUrl+"user/"+userId)
     .pipe(
       catchError(this.handleError)
