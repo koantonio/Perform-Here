@@ -52,7 +52,8 @@ export class BrowsingContentComponent implements OnInit {
    purchase(){
     this.router.navigate(['purchase']);
    }
-  title = 'angular-stripe';
+   
+  title = 'Perform-Here';
   priceId = 'price_1LsVlNEnOsQjjv2USBd9xYtq';
   product = {
     title: 'Artist',

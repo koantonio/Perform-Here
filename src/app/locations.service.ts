@@ -38,7 +38,7 @@ export class LocationsService {
       },
       {
         id: 8,
-        name: "District of Columbia"
+        name: "Washington D.C."
       },
       {
         id: 9,
@@ -179,175 +179,275 @@ export class LocationsService {
     return [
       {
         id: 1,
-        name: "Huntsville"
+        name: "Huntsville",
+        longitude: '-86.601791',
+        latitude: '34.738228'
       },
       {
         id: 1,
-        name: "Montgomery"
+        name: "Montgomery",
+        longitude: '-86.279167',
+        latitude: '32.361668'
       },
       {
         id: 1,
-        name: "Birmingham"
+        name: "Birmingham",
+        longitude: '-86.779633',
+        latitude: '33.543682'
       },
       {
         id: 1,
-        name: "Mobile"
+        name: "Mobile",
+        longitude: '-88.039894',
+        latitude: '30.695366'
       },
       {
         id: 2,
-        name: "Anchorage"
+        name: "Anchorage",
+        longitude: '-149.863129',
+        latitude: '61.217381'
       },
       {
         id: 3,
-        name: "Pheonix"
+        name: "Pheonix",
+        longitude: '-112.074036',
+        latitude: '33.448376'
       },
       {
         id: 3,
-        name: "Tucson"
+        name: "Tucson",
+        longitude: '-110.911789',
+        latitude: '32.253460'
       },
       {
         id: 3,
-        name: "Mesa"
+        name: "Mesa",
+        longitude: '-111.833267',
+        latitude: '33.424564'
       },
       {
         id: 3,
-        name: "Chandler"
+        name: "Chandler",
+        longitude: '-111.844940',
+        latitude: '33.307575'
       },
       {
         id: 3,
-        name: "Gilbert"
+        name: "Gilbert",
+        longitude: '-111.801682',
+        latitude: '33.360355'
       },
       {
         id: 3,
-        name: "Glendale"
+        name: "Glendale",
+        longitude: '-112.191696',
+        latitude: '33.548264'
       },
       {
         id: 3,
-        name: "Scottsdale"
+        name: "Scottsdale",
+        longitude: '-111.925278',
+        latitude: '33.501324'
       },
       {
         id: 3,
-        name: "Peoria"
+        name: "Peoria",
+        longitude: '-112.237068',
+        latitude: '33.580944'
       },
       {
         id: 3,
-        name: "Tempe"
+        name: "Tempe",
+        longitude: '-111.939896',
+        latitude: '33.427204'
       },
       {
         id: 3,
-        name: "Surprise"
+        name: "Surprise",
+        longitude: '-112.366669',
+        latitude: '33.630554'
       },
       {
         id: 4,
-        name: "Little Rock"
+        name: "Little Rock",
+        longitude: '-92.289597',
+        latitude: '34.746483'
       },
       {
         id: 5,
-        name: "Los Angeles"
+        name: "Los Angeles",
+        longitude: '-118.243683',
+        latitude: '34.052235'
       },
       {
         id: 5,
-        name: "San Diego"
+        name: "San Diego",
+        longitude: '-117.161087',
+        latitude: '32.715736'
       },
       {
         id: 5,
-        name: "San Jose"
+        name: "San Jose",
+        longitude: '-121.893028',
+        latitude: '37.335480'
       },
       {
         id: 5,
-        name: "San Francisco"
+        name: "San Francisco",
+        longitude: '-122.431297',
+        latitude: '37.773972'
       },      
       {
         id: 5,
-        name: "Fresno"
+        name: "Fresno",
+        longitude: '-119.772591',
+        latitude: '36.746841'
       },      
       {
         id: 5,
-        name: "Sacramento"
+        name: "Sacramento",
+        longitude: '-121.478851',
+        latitude: '38.575764'
       },      {
         id: 5,
-        name: "Long Beach"
+        name: "Long Beach",
+        longitude: '-118.193741',
+        latitude: '33.770050'
       },      {
         id: 5,
-        name: "Oakland"
+        name: "Oakland",
+        longitude: '-122.271111',
+        latitude: '37.804363'
       },      {
         id: 5,
-        name: "Bakersfield"
+        name: "Bakersfield",
+        longitude: '-119.043732',
+        latitude: '35.393528'
       },      {
         id: 5,
-        name: "Anaheim"
+        name: "Anaheim",
+        longitude: '-117.914505',
+        latitude: '33.835293'
       },      {
         id: 5,
-        name: "Irvine"
+        name: "Irvine",
+        longitude: '-117.823059',
+        latitude: '33.669445'
       },      {
         id: 5,
-        name: "Stockton"
+        name: "Stockton",
+        longitude: '-121.275604',
+        latitude: '37.961632'
       },      {
         id: 5,
-        name: "Riverside"
+        name: "Riverside",
+        longitude: '-117.396156',
+        latitude: '33.953350'
       },      {
         id: 5,
-        name: "Santa Ana"
+        name: "Santa Ana",
+        longitude: '-117.867836',
+        latitude: '33.745571'
       },      {
         id: 5,
-        name: "Chula Vista"
+        name: "Chula Vista",
+        longitude: '-117.106705',
+        latitude: '32.639954'
       },      {
         id: 5,
-        name: "Santa Clarita"
+        name: "Santa Clarita",
+        longitude: '-118.542587',
+        latitude: '34.391663'
       },      {
         id: 5,
-        name: "Fremont"
+        name: "Fremont",
+        longitude: '-121.988571',
+        latitude: '37.548271'
       },      {
         id: 5,
-        name: "San Bernardino"
+        name: "San Bernardino",
+        longitude: '-117.302399',
+        latitude: '34.115784'
       },      {
         id: 5,
-        name: "Modesto"
+        name: "Modesto",
+        longitude: '-120.994446',
+        latitude: '37.661388'
       },      {
         id: 5,
-        name: "Moreno Valley"
+        name: "Moreno Valley",
+        longitude: '-117.229675',
+        latitude: '33.942467'
       },      {
         id: 5,
-        name: "Fontana"
+        name: "Fontana",
+        longitude: '-117.435051',
+        latitude: '34.092232'
       },      {
         id: 5,
-        name: "Oxnard"
+        name: "Oxnard",
+        longitude: '-119.170898',
+        latitude: '34.196411'
       },      {
         id: 5,
-        name: "Huntington Beach"
+        name: "Huntington Beach",
+        longitude: '-117.998970',
+        latitude: '33.660057'
       },      {
         id: 5,
-        name: "Glendale"
+        name: "Glendale",
+        longitude: '-118.255074',
+        latitude: '34.142509'
       },      {
         id: 5,
-        name: "Elk Grove"
+        name: "Elk Grove",
+        longitude: '-121.381943',
+        latitude: '38.438332'
       },      {
         id: 5,
-        name: "Santa Rosa"
+        name: "Santa Rosa",
+        longitude: '-122.720306',
+        latitude: '38.444660'
       },      {
         id: 5,
-        name: "Ontario"
+        name: "Ontario",
+        longitude: '-117.651215',
+        latitude: '34.068871'
       },      {
         id: 5,
-        name: "Lancaster"
+        name: "Lancaster",
+        longitude: '-118.154160',
+        latitude: '34.686787'
       },      {
         id: 5,
-        name: "Rancho Cucamonga"
+        name: "Rancho Cucamonga",
+        longitude: '-117.594429',
+        latitude: '34.110489'
       },      {
         id: 5,
-        name: "Oceanside"
+        name: "Oceanside",
+        longitude: '-117.325836',
+        latitude: '33.211666'
       },      {
         id: 5,
-        name: "Palmdale"
+        name: "Palmdale",
+        longitude: '-118.109291',
+        latitude: '34.579449'
       },      {
         id: 5,
-        name: "Garden Grove"
+        name: "Garden Grove",
+        longitude: '-117.973480',
+        latitude: '33.785645'
       },      {
         id: 5,
-        name: "Hayward"
+        name: "Hayward",
+        longitude: '-122.080795',
+        latitude: '37.668819'
       },      {
         id: 5,
-        name: "Salinas"
+        name: "Salinas",
+        longitude: '-121.655502',
+        latitude: '36.677738'
       },      {
         id: 5,
         name: "Sunnyvale"
@@ -403,7 +503,7 @@ export class LocationsService {
       },
       {
         id: 8,
-        name: "Washington"
+        name: "Washington D.C."
       },
       {
         id: 9,
