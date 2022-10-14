@@ -18,30 +18,35 @@ export class ProfileComponent implements OnInit {
   userId: string | null = "";
   isArtist: boolean = false;
   a: Artist = new Artist("", "", "");
-  votesByUser: Votes[] = [];
+  votes: Votes[] = [];
 
   //initializing artist and newArtist arrays
   constructor(private votesService:VotesService, private artistService: ArtistsService, private userService: UserService, private cognitoService: CognitoService) {
     this.artistService.getAllArtists().subscribe(artists=>{
       this.artists=artists;
       this.newArtists = artists;
-      
     });
-    
   }
 
   //grabs users email
   ngOnInit(): void {
     this.userId = this.cognitoService.getEmail();
     this.artistService.getArtistById(this.userId).subscribe(artist => {
-      console.log(artist);//prints out current logins email
       if(artist != null) {
         this.isArtist = true;
         this.a=artist;
       }
-    });
-  this.votesService.getAllVotes().subscribe(votes => this.votesByUser = votes);
-  console.log(this.votesByUser);
+
+      if(this.isArtist) {
+        let stageName:string = "";
+        this.artistService.getArtistById(this.userId).subscribe(artist => {
+          this.votesService.getVotesForArtist(artist.stageName).subscribe(votes => this.votes = votes);
+        });
+      }
+      else {
+        this.votesService.getVotesByUser(this.cognitoService.getEmail()).subscribe(votes => this.votes = votes);
+      }
+    });    
   }
 
   updateArtist() {
