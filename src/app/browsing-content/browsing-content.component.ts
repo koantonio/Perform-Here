@@ -32,7 +32,6 @@ export class BrowsingContentComponent implements OnInit {
     this.artistService.getAllArtists().subscribe(artists=> {
       this.artists=artists;
       this.newArtists = artists;
-      console.log(artists);
     });
     // console.log(locations.state);
   }
@@ -45,6 +44,7 @@ export class BrowsingContentComponent implements OnInit {
   onSelect(states : any){
     this.cities = this.locationService.cities().filter(e => e.id == states.target.value);
   }
+  
   updateArtists() {
     this.newArtists = this.artists.filter(a => a.stageName.toLowerCase().includes(this.searchText.toLowerCase()));
   }
