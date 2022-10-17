@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   cognitoUserPoolId: 'us-west-2_kefXUvzNA',
   cognitoAppClientId: '7naup3g2ase11sfgcihln1dbct',
+  stripe_key: 'pk_test_51LrEjvEnOsQjjv2UZmdKyfpdTuWxVJUtdWH1qdJaIvMvUdfol2tVMxYweZDQRL9HKC3ng0ahvSKnHNFHc9DVxNKE00hWeuJEdk'
 };
 
 /*

@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LandingContentComponent } from './landing-content/landing-content.component';
 import { PerformerFormComponent } from './performer-form/performer-form.component';
@@ -12,8 +11,8 @@ import { BrowsingContentComponent } from './browsing-content/browsing-content.co
 import { NavbarContentComponent } from './navbar-content/navbar-content.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { SearchComponentComponent } from './search-component/search-component.component';
-import { VoteComponent } from './vote/vote.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
@@ -22,14 +21,13 @@ import { VoteComponent } from './vote/vote.component';
     AppComponent,
     SignUpComponent,
     SignInComponent,
-    DashboardComponent,
     LandingContentComponent,
     PerformerFormComponent,
     BrowsingContentComponent,
     NavbarContentComponent,
     ProfileComponent,
-    VoteComponent
-
+    SuccessComponent,
+    FailureComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

@@ -41,7 +41,7 @@ export class ArtistsService {
     );
   }
   
-  getArtistById(id:string) {
+  getArtistById(id:string | null) {
     return this.http.get<Artist>(this.baseUrl+id, this.postHeaders)
     .pipe(
       catchError(this.handleError)
@@ -68,5 +68,4 @@ export class ArtistsService {
       catchError(this.handleError)
     );
   }
-  
 }
