@@ -1,9 +1,8 @@
 export class Votes{
     constructor(
-        public id: number,
-        public userId: string,
-        public artistName: string,
-        public state: string,
-        public city: string,
+        public userId: string | null,
+        public artistName: string | null,
+        public state: string | null,
+        public city: string | null,
     ){}
 }

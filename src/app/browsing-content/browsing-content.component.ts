@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CognitoUserPool } from 'amazon-cognito-identity-js';
 import { environment } from 'src/environments/environment';
 import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
-import { Votes } from '../votes';
-import { UserService } from "../user.service";
 import { CognitoService } from '../cognito.service';
-import { locations } from 'src/assets/locations';
-import { state } from '@angular/animations';
 import { LocationsService } from '../locations.service';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 
@@ -22,8 +17,10 @@ export class BrowsingContentComponent implements OnInit {
   searchText : string = "";
   userId : string = "";
   newArtists: Artist[] = [];
-  states: any =[];
+  states: any = [];
   cities : any = [];
+  pickedState: string = "Select State";
+  pickedCity: string = "Select City";
 
   paymentHandler: any = null;
   constructor(private router: Router, private artistService: ArtistsService, private cognitoService: CognitoService, private locationService : LocationsService) {
@@ -62,7 +59,11 @@ export class BrowsingContentComponent implements OnInit {
   quantity = 1;
   stripePromise = loadStripe(environment.stripe_key);
 
-  async checkout() {
+  async checkout(stageName:string) {
+    localStorage.setItem("pickedState", this.pickedState);
+    localStorage.setItem("pickedCity",this.pickedCity);
+    localStorage.setItem("pickedArtist",stageName);
+
     const stripe = await this.stripePromise;
     if(stripe != null) {
       const {error}  = await stripe.redirectToCheckout({

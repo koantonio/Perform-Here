@@ -12,11 +12,11 @@
         />
     </div>
     <form>
-        <select (change)="onSelect($event)">
+        <select name="state" (change)="onSelect($event)" [(ngModel)]="pickedState">
             <option>Select State</option>
             <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
         </select>
-        <select class="selectCity">
+        <select name="city" class="selectCity" [(ngModel)]="pickedCity">
             <option>Select City</option>
             <option *ngFor="let city of cities">{{city.name}}</option>
         </select>
@@ -32,7 +32,8 @@
                 <p>{{ artist.description }}</p>
                 <div class="voteButton">
                     <!-- <button [routerLink]="['/vote']"  class="votebtn text-light">Vote</button>-->
-                    <button type="button" class="votebtn text-light" (click)="checkout()" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
+                    
+                    <button type="button" class="votebtn text-light" (click)="checkout(artist.stageName)" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
 
                          <!-- <div class="container mt-5">
         
