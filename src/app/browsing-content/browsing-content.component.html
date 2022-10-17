@@ -11,6 +11,17 @@
           (ngModelChange)="updateArtists()"
         />
     </div>
+    <form>
+        <select (change)="onSelect($event)">
+            <option>Select State</option>
+            <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
+        </select>
+        <select class="selectCity">
+            <option>Select City</option>
+            <option *ngFor="let city of cities">{{city.name}}</option>
+        </select>
+         <br>
+     </form>
     <div class="search-results">
         <div class="card-container" *ngFor="let artist of newArtists">
             <div class="artist-card-body text-light">
@@ -21,36 +32,23 @@
                 <p>{{ artist.description }}</p>
                 <div class="voteButton">
                     <!-- <button [routerLink]="['/vote']"  class="votebtn text-light">Vote</button>-->
-                    <button type="button" class="votebtn text-light" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
+                    <button type="button" class="votebtn text-light" (click)="checkout()" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
 
-                         <div class="container mt-5">
+                         <!-- <div class="container mt-5">
         
                              <div class="modal" id="myModal">
                                  <div class="modal-dialog">
                                      <div class="modal-content">
                                          <div class="modal-header">
-                                            <!-- <h5>{{ artist.stageName }}</h5> -->
+                                
 
                                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                          </div>
                                          <div class="modal-body">
-                                             <form>
-                                                <select (change)="onSelect($event)">
-                                                    <option>Select State</option>
-                                                    <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
-                                                </select>
-                                                <select>
-                                                    <option>Select City</option>
-                                                    <option *ngFor="let city of cities">{{city.name}}</option>
-                                                </select>
-                                                 <br>
-                                                 <button type="submit" class="votebtn text-light" (click)="checkout()">Purchase Vote</button>
-                                             </form>
-                                         </div>
                                      </div>
                                  </div>
                              </div>
-                         </div>
+                         </div> -->
                  </div>
             </div>
         </div>
