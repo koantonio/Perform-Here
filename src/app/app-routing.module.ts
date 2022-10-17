@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from 'src/app/auth/sign-up/sign-up.component';
 import { SignInComponent } from 'src/app/auth/sign-in/sign-in.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { PerformerFormComponent } from './performer-form/performer-form.component';
 import { LandingContentComponent } from './landing-content/landing-content.component'
 import { BrowsingContentComponent } from './browsing-content/browsing-content.component';
@@ -25,11 +24,6 @@ const routes: Routes = [
     path: 'profile', 
     component: ProfileComponent,
     canActivate:[CognitoService],
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [CognitoService],
   },
   { 
     path: 'performer_form', 
