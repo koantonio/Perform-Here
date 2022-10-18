@@ -57,7 +57,7 @@ export class BrowsingContentComponent implements OnInit {
     price: 18.00
   };
   quantity = 1;
-  stripePromise = loadStripe(environment.stripe_key);
+  stripePromise = loadStripe('pk_test_51LrEjvEnOsQjjv2UZmdKyfpdTuWxVJUtdWH1qdJaIvMvUdfol2tVMxYweZDQRL9HKC3ng0ahvSKnHNFHc9DVxNKE00hWeuJEdk');
 
   async checkout(stageName:string) {
     localStorage.setItem("pickedState", this.pickedState);
