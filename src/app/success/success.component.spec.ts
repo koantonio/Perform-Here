@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SuccessComponent } from './success.component';
@@ -8,6 +9,7 @@ describe('SuccessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ SuccessComponent ]
     })
     .compileComponents();
