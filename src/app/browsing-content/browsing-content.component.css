@@ -135,3 +135,6 @@ select {
     margin: 15px;
   }
 
+  .stateCity {
+    display: flex;
+  }
