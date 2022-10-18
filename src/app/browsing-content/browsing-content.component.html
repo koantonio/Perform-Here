@@ -11,7 +11,7 @@
           (ngModelChange)="updateArtists()"
         />
     </div>
-    <form>
+    <form class="stateCity">
         <select name="state" (change)="onSelect($event)" [(ngModel)]="pickedState">
             <option>Select State</option>
             <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
@@ -20,7 +20,6 @@
             <option>Select City</option>
             <option *ngFor="let city of cities">{{city.name}}</option>
         </select>
-         <br>
      </form>
     <div class="search-results">
         <div class="card-container" *ngFor="let artist of newArtists">
