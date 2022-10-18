@@ -1,6 +1,6 @@
 <div class="page">
   <div class="register vstack gap-1" *ngIf="!isConfirm">
-    <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="card shadow-2-strong card-registration clearfix" novalidate>
+    <form [formGroup]="signupForm" data-test-id="signUpForm" (ngSubmit)="onSignup()" class="card shadow-2-strong card-registration clearfix" novalidate>
       <h1>Sign up</h1>
 
       <!--Name Row-->
@@ -14,6 +14,7 @@
             id="firstname"
             class="form-control text"
             formControlName="firstname"
+            data-test-id="firstName"
             required
           />
 
@@ -33,6 +34,7 @@
             id="lastname"
             class="form-control text"
             formControlName="lastname"
+            data-test-id="lastName"
             required
           />
 
@@ -54,6 +56,7 @@
           id="Email"
           class="form-control text"
           formControlName="Email"
+          data-test-id="Email"
           required
         />
         <div *ngIf="Email?.invalid && (Email?.dirty ||Email?.touched)">
@@ -78,6 +81,7 @@
           id="psw"
           required
           class="form-control text"
+          data-test-id="password"
           formControlName="Password"
         />
 
@@ -104,6 +108,7 @@
           required
           class="form-control text"
           formControlName="confirmpassword"
+          data-test-id="confirmpassword"
         />
 
         <div *ngIf="confirmpassword?.invalid && (confirmpassword?.dirty ||confirmpassword?.touched)">
@@ -134,13 +139,13 @@
   <div class="register" *ngIf="isConfirm">
     <form class="card shadow-2-strong card-registration clearfix">
       <h1>Confirm Email</h1>
-      <div class="form-group">
+      <div class="form-group" data-test-id="confirmEmail">
         <div>
           <label for="code" class="confirm-label">Enter code sent to: <br> <p><small>{{Email?.value}}</small></p></label>
-          <input type="text" id="code" name="code" #code="ngModel" [(ngModel)]="user.code" class="form-control form-control-sm">
+          <input type="text" id="code" name="code" #code="ngModel" data-test-id="code" [(ngModel)]="user.code" class="form-control form-control-sm">
         </div>
       </div>
-      <button type="button" (click)="confirmSignUp()" class="btn btn-primary btn-lg btn-block" [disabled]="loading">
+      <button type="button" (click)="confirmSignUp()" data-test-id="confirmButton" class="btn btn-primary btn-lg btn-block" [disabled]="loading">
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
         Confirm
       </button>

@@ -1,6 +1,6 @@
 <div class="page">
 <div class="register vstack gap-1">
-  <form (submit)="onSignIn(signInForm)" #signInForm="ngForm" class="card shadow-2-strong card-registration clearfix">
+  <form (submit)="onSignIn(signInForm)" data-test-id="signinForm" #signInForm="ngForm" class="card shadow-2-strong card-registration clearfix">
     <h1>Login</h1>
     <div class="form-group">
       <label for="email"><b>Email address</b></label>
@@ -14,6 +14,7 @@
         placeholder="Enter Username"
         required
         class="form-control text"
+        data-test-id="Email"
       />
     </div>
     
@@ -29,6 +30,7 @@
         name="password"
         placeholder="Enter Password"
         class="form-control text"
+        data-test-id="password"
       />
     </div>
 
