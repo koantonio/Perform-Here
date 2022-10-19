@@ -8,7 +8,8 @@ class CityVotes{
   constructor(
       public votes: number,
       public city: string | null,
-      public state: string | null
+      public state: string | null,
+      public artistName: string | null
   ){}
 }
 
@@ -20,7 +21,7 @@ class CityVotes{
 export class StatsTableComponent implements OnInit {
 
   @Input() votes: Votes[] = [];
-
+  discountCode: string = "";
   votesPerCity: CityVotes[] = [];
   
   constructor(private votesService: VotesService) { }
@@ -45,15 +46,19 @@ export class StatsTableComponent implements OnInit {
           }
         });
         if(!flag) {   //City Not Found in votes per city array, so it is added
-          this.votesPerCity.push(new CityVotes(1, vote.city, vote.state));
+          this.votesPerCity.push(new CityVotes(1, vote.city, vote.state, vote.artistName));
         }
       }
       else {  //Vote per city array was empty so add city
-        this.votesPerCity.push(new CityVotes(1, vote.city, vote.state));
+        this.votesPerCity.push(new CityVotes(1, vote.city, vote.state, vote.artistName));
       }
     });
 
     //Sort array by votes
     this.votesPerCity.sort((a, b) => (a.votes < b.votes) ? 1 : -1 );
+  }
+
+  confirmLocation(artistName:string|null, state: string | null, city: string| null, discountCode: HTMLInputElement) {
+    this.votesService.updateVotes(artistName, state, city, discountCode.value).subscribe(res => console.log(res));
   }
 }

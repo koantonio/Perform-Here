@@ -5,6 +5,7 @@
               <th scope="col">City</th>
               <th scope="col">State</th>
               <th scope="col">Votes</th>
+              <th>Confirm</th>
             </tr>
           </thead>
           <tbody>
@@ -12,6 +13,9 @@
               <td>{{vote.city}}</td>
               <td>{{vote.state}}</td>
               <td>{{vote.votes}}</td>
+              <td class="confSection">
+                <input type="text" name="discCode" id="discCode" placeholder="Discount Code" #discCode>
+                <button class="confButton" (click)="confirmLocation(vote.artistName, vote.state, vote.city, discCode)">Confirm</button></td>
             </tr>
           </tbody>
     </table>
