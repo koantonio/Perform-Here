@@ -37,7 +37,7 @@ font-size: 20px;
     font-weight: bold;
   }
   
-  input[type=submit]:hover {
+  button[type=submit]:hover {
     background-color: #8759D4;
   }
   

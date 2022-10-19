@@ -15,6 +15,9 @@ const routes: Routes = [
   { path: 'home', component:LandingContentComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
+
+  { path: 'navbar-content', component: NavbarContentComponent },
+
   { 
     path: 'browse',
     component: BrowsingContentComponent,
