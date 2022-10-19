@@ -1,20 +1,20 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuccessComponent } from './success.component';
+import { StatsTableComponent } from './stats-table.component';
 
-describe('SuccessComponent', () => {
-  let component: SuccessComponent;
-  let fixture: ComponentFixture<SuccessComponent>;
+describe('StatsTableComponent', () => {
+  let component: StatsTableComponent;
+  let fixture: ComponentFixture<StatsTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [ SuccessComponent ]
+      declarations: [ StatsTableComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SuccessComponent);
+    fixture = TestBed.createComponent(StatsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

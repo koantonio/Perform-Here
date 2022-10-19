@@ -1,9 +1,10 @@
 <div class="page">
     <app-navbar-content></app-navbar-content>
   <div class="search">
-    <h1 class="title text-light">Choose an artist</h1>
+    <h1 class="title text-light" data-test-id="header">Choose an artist</h1>
     <div class="searchbar">
         <input
+          data-test-id="searchbartest"
           type="search"
           class="form-control rounded"
           placeholder="Search here"
@@ -11,7 +12,7 @@
           (ngModelChange)="updateArtists()"
         />
     </div>
-    <form>
+    <form class="stateCity">
         <select name="state" (change)="onSelect($event)" [(ngModel)]="pickedState">
             <option>Select State</option>
             <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
@@ -20,7 +21,6 @@
             <option>Select City</option>
             <option *ngFor="let city of cities">{{city.name}}</option>
         </select>
-         <br>
      </form>
     <div class="search-results">
         <div class="card-container" *ngFor="let artist of newArtists">

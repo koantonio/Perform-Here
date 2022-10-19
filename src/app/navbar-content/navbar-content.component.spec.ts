@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { CognitoService } from '../cognito.service';
@@ -21,12 +22,12 @@ describe('NavbarContentComponent', () => {
     */
 
     await TestBed.configureTestingModule({
-      declarations: [ NavbarContentComponent ],
-
-      //
+      /*
       providers:[
        // {provide:CognitoService,useValue:authServiceSpy}
-      ]
+      ]*/
+      imports: [HttpClientModule],
+      declarations: [ NavbarContentComponent ]
     })
     .compileComponents();
 

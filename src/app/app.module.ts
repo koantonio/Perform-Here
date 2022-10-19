@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { SuccessComponent } from './success/success.component';
 import { FailureComponent } from './failure/failure.component';
+import { StatsTableComponent } from './stats-table/stats-table.component';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
@@ -27,7 +28,8 @@ import { FailureComponent } from './failure/failure.component';
     NavbarContentComponent,
     ProfileComponent,
     SuccessComponent,
-    FailureComponent
+    FailureComponent,
+    StatsTableComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
