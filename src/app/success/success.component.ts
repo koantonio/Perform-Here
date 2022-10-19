@@ -18,7 +18,7 @@ export class SuccessComponent implements OnInit {
     this.message = "You voted for " + localStorage.getItem("pickedArtist") + " at the location " + localStorage.getItem("pickedCity") + " " + localStorage.getItem("pickedState");
     let pickedState: string | null = localStorage.getItem("pickedState");
     if(pickedState != null) {
-      let v:Votes = new Votes(localStorage.getItem("userId"), localStorage.getItem("pickedArtist"), this.locationService.states()[parseInt(pickedState)-1].name, localStorage.getItem("pickedCity"));
+      let v:Votes = new Votes(localStorage.getItem("userId"), localStorage.getItem("pickedArtist"), this.locationService.states()[parseInt(pickedState)-1].name, localStorage.getItem("pickedCity"), "Not Applicable");
       this.voteService.addVote(v).subscribe(res => console.log(res));
     }
     else {

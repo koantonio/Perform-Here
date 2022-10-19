@@ -4,5 +4,6 @@ export class Votes{
         public artistName: string | null,
         public state: string | null,
         public city: string | null,
+        public discountCode: string | null
     ){}
 }

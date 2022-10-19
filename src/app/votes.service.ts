@@ -45,9 +45,18 @@ export class VotesService {
       "userId": v.userId,
       "artistName": v.artistName,
       "state": v.state,
-      "city": v.city
+      "city": v.city,
+      "discountCode": "Not Applicable"
     }
     return this.http.post(this.baseUrl+"add", body, this.postHeaders)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateVotes(artistName:string|null, state:string|null, city:string|null, discountCode:string|null) {
+    console.log(this.baseUrl+"artist/update/"+state+"/"+city+"/"+discountCode);
+    return this.http.put(this.baseUrl+"artist/"+artistName+"/"+state+"/"+city+"/"+discountCode, {}, this.postHeaders)
     .pipe(
       catchError(this.handleError)
     );
