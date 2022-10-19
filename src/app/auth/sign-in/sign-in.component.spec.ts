@@ -55,12 +55,12 @@ describe('SignInComponent', () => {
 
     signInForm.dispatchEvent(new Event('submit'));
     expect(cognitoServiceSpy.signIn).toHaveBeenCalledWith(user);
-  })
+  });
 
   it('should route to singup when signup anchor tag is clicked', () => {
     let links = fixture.nativeElement.querySelectorAll('a');
 
     expect(links[0].textContent).toEqual('Sign Up');
     expect(links[0].getAttribute('href')).toEqual('/signup');
-  })
+  });
 });

@@ -48,9 +48,6 @@ export class CognitoService implements CanActivate{
         name: user.firstName,
         family_name: user.lastName,
         email: user.email
-      },
-      autoSignIn: { // optional - enables auto sign in after user is confirmed
-        enabled: true,
       }
     });
   }

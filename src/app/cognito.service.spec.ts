@@ -1,37 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Auth } from 'aws-amplify';
 import { CognitoService, IUser } from './cognito.service';
-import { AuthClass } from '@aws-amplify/auth/lib-esm/Auth';
-import { AppRoutingModule } from './app-routing.module';
-import { Observable } from 'rxjs';
 
 describe('CognitoService', () => {
   let service: CognitoService;
-  let authSpy: jasmine.SpyObj<AuthClass>;
-  let cognitoServiceSpy: jasmine.SpyObj<CognitoService>
   let user = {} as IUser
   let cognitoAuth: jasmine.SpyObj<any>;
-  let authSubjectSpy: jasmine.SpyObj<Observable<boolean>>;
-
-  user.email = "fakeemail@notreal.com";
-  user.password = "Test123!";
-  user.firstName = "Joe";
-  user.lastName = "Nobody"
 
   beforeEach(() => {
-    authSpy = jasmine.createSpyObj('AuthClass', ['signIn', 'signOut', 'signUp', 'confirmSignUp']);
-    cognitoAuth = jasmine.createSpyObj('Auth', ['currentUserInfo', 'signIn', 'signOut', 'signUp', 'confirmSignUp'])
+    cognitoAuth = jasmine.createSpyObj('Auth', ['currentUserInfo', 'signOut'])
+    user.email = "fakeemail@notreal.com";
+    user.password = "Test123!";
 
     TestBed.configureTestingModule({
       imports:[
-        HttpClientModule,
-        AppRoutingModule,
+        HttpClientModule
       ],
       providers: [
-        { provide: AuthClass, useValue: authSpy},
-        { provide: CognitoService, useValue: cognitoServiceSpy },
-        { provide: Auth, userValue: cognitoAuth }
+        { provide: Auth, useValue: cognitoAuth }
       ]
     });
     service = TestBed.inject(CognitoService);
@@ -41,12 +28,48 @@ describe('CognitoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should login', () => {
-    service.signIn(user).then(
-      res => expect(res).toEqual(true)
-    );
+  it('isAuthenticated, should broadcast true, if user is returned.', async () =>{
+    let isAuthenticated: boolean;
+    cognitoAuth.currentUserInfo.and.returnValue(Promise.resolve(user));
 
-    expect(Auth.signIn).toHaveBeenCalledWith(user.email, user.password);
+    service.isAuthenticated().then(
+      res => isAuthenticated = res
+    );
+    setTimeout(() => expect(isAuthenticated).toBeTruthy(), 500);
   });
 
+  it('getUser should call currentUserInfo and return a user', async () => {
+    let returnedUser: IUser = {} as IUser;
+    cognitoAuth.currentUserInfo.and.returnValue(Promise.resolve(user));
+    service.getUser().then(
+      user => returnedUser = user
+    );
+    setTimeout(() => {
+      expect(cognitoAuth.currentUserInfo).toHaveBeenCalled()
+      expect(returnedUser).toEqual(user)
+    }, 500);
+  });
+
+  it('getUserAttributes should call currentUserInfo and return a user', async () => {
+    let returnedUser: IUser = {} as IUser;
+    cognitoAuth.currentUserInfo.and.returnValue(Promise.resolve(user));
+    service.getUserAttributes().then(
+      user => returnedUser = user
+    );
+    setTimeout(() => {
+      expect(cognitoAuth.currentUserInfo).toHaveBeenCalled()
+      expect(returnedUser).toEqual(user)
+    }, 500);
+  });
+
+  it('should log out ', async () => {
+    let isAuthenticated: boolean;
+    cognitoAuth.signOut.and.returnValue(Promise.resolve(true));
+    service.signOut().then(
+      res => isAuthenticated = res
+    );
+    setTimeout(() => {
+      expect(isAuthenticated).toEqual(true)
+    }, 500);
+  });
 });
