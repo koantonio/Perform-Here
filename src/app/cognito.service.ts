@@ -48,9 +48,6 @@ export class CognitoService implements CanActivate{
         name: user.firstName,
         family_name: user.lastName,
         email: user.email
-      },
-      autoSignIn: { // optional - enables auto sign in after user is confirmed
-        enabled: true,
       }
     });
   }
@@ -115,6 +112,13 @@ export class CognitoService implements CanActivate{
       });
   }
   
+  public passwordReset() {
+    Auth.currentAuthenticatedUser()
+    .then(user => {
+      return Auth.forgotPassword
+    })
+  }
+
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
   }
