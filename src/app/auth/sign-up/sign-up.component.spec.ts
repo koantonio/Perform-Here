@@ -1,9 +1,15 @@
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { ComponentFixture, InjectSetupWrapper, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from 'src/app/cognito.service';
 import { AppRoutingModule } from '../../app-routing.module';
+=======
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+>>>>>>> main
 import { SignUpComponent } from './sign-up.component';
 
 
@@ -33,6 +39,7 @@ describe('SignUpComponent', () => {
     
 
     await TestBed.configureTestingModule({
+<<<<<<< HEAD
       declarations: [ SignUpComponent ],
       imports: [
         AppRoutingModule,
@@ -43,6 +50,10 @@ describe('SignUpComponent', () => {
       providers: [
         { provide: CognitoService, useValue: cognitoServiceSpy }
       ]
+=======
+      imports: [HttpClientModule, FormsModule, ReactiveFormsModule],
+      declarations: [ SignUpComponent ]
+>>>>>>> main
     })
     .compileComponents();
 

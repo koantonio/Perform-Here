@@ -42,7 +42,6 @@ export class VotesService {
 
   addVote(v: Votes) {
     const body = {
-      "id": v.id,
       "userId": v.userId,
       "artistName": v.artistName,
       "state": v.state,
