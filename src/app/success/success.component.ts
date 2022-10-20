@@ -11,6 +11,7 @@ import { VotesService } from '../votes.service';
 export class SuccessComponent implements OnInit {
 
   message: string = "";
+  fanMessage: string ="";
 
   constructor(private voteService: VotesService, private locationService:LocationsService) { }
 
