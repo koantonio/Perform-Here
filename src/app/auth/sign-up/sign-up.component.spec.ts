@@ -1,22 +1,23 @@
 import { HttpClientModule } from '@angular/common/http';
-import { createPlatform } from '@angular/core';
-import { ComponentFixture, InjectSetupWrapper, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from 'src/app/cognito.service';
-import { AppRoutingModule } from '../../app-routing.module';
+import { UserService } from 'src/app/user.service';
 import { SignUpComponent } from './sign-up.component';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
   let cognitoServiceSpy: jasmine.SpyObj<CognitoService>
+  let userServiceSpy: jasmine.SpyObj<UserService>
   let routerSpy: jasmine.SpyObj<Router>;
   let user = {} as IUser
 
   beforeEach(async () => {
     cognitoServiceSpy = jasmine.createSpyObj('CognitoService',['signUp', 'confirmSignUp']);
     routerSpy = jasmine.createSpyObj('Router',['navigate']);
+    userServiceSpy = jasmine.createSpyObj('UserService', ['addUser']);
 
     user.email = "fakeemail@notreal.com";
     user.password = "Test123!";
@@ -49,6 +50,7 @@ describe('SignUpComponent', () => {
   });
 
   it('Should invoke SignUp, with valid form data when user clicks submit', async () => {
+    cognitoServiceSpy.signUp.and.returnValue(Promise.resolve(true));
     let firstNameTextBox = fixture.nativeElement.querySelector('[data-test-id="firstName"]');
     let lastNameTextBox = fixture.nativeElement.querySelector('[data-test-id="lastName"]');
     let emailTextBox = fixture.nativeElement.querySelector('[data-test-id="Email"]');
@@ -65,7 +67,7 @@ describe('SignUpComponent', () => {
     emailTextBox.value = user.email;
     emailTextBox.dispatchEvent(new Event('input'));
 
-    passwordTextBox.value = user.password;
+    passwordTextBox.value = "Test123!";
     passwordTextBox.dispatchEvent(new Event('input'));
 
     confirmPasswordTextBox.value = "Test123!";
@@ -73,6 +75,54 @@ describe('SignUpComponent', () => {
 
     signUpForm.dispatchEvent(new Event('submit'));
     expect(cognitoServiceSpy.signUp).toHaveBeenCalledWith(user);
+    fixture.whenStable().then(
+      () => {
+        expect(component.loading).toBeFalse;
+        expect(component.isConfirm).toBeTrue;
+      }
+    );
+  });
+
+  it('Should alert if passwords do not match', async () => {
+    let signUpForm = fixture.nativeElement.querySelector('[data-test-id="signUpForm"]');
+    spyOn(window, "alert");
+    let passwordTextBox = fixture.nativeElement.querySelector('[data-test-id="password"]');
+    let confirmPasswordTextBox = fixture.nativeElement.querySelector('[data-test-id="confirmpassword"]');
+
+    passwordTextBox.value = 'Test123!';
+    passwordTextBox.dispatchEvent(new Event('input'));
+
+    confirmPasswordTextBox.value = "Test123";
+    confirmPasswordTextBox.dispatchEvent(new Event('input'));
+
+    signUpForm.dispatchEvent(new Event('submit'));
+
+    fixture.whenStable().then(
+      () => {
+        expect(window.alert).toHaveBeenCalledOnceWith("Passwords must match!");
+      }
+    );
+  });
+
+  it('Should alert if there is invalid information', async () => {
+    let signUpForm = fixture.nativeElement.querySelector('[data-test-id="signUpForm"]');
+    spyOn(window, "alert");
+    let passwordTextBox = fixture.nativeElement.querySelector('[data-test-id="password"]');
+    let confirmPasswordTextBox = fixture.nativeElement.querySelector('[data-test-id="confirmpassword"]');
+
+    passwordTextBox.value = user.password;
+    passwordTextBox.dispatchEvent(new Event('input'));
+
+    confirmPasswordTextBox.value = "Test123!";
+    confirmPasswordTextBox.dispatchEvent(new Event('input'));
+
+    signUpForm.dispatchEvent(new Event('submit'));
+
+    fixture.whenStable().then(
+      () => {
+        expect(window.alert).toHaveBeenCalledOnceWith("Invalid Signup information");
+      }
+    );
   });
 
   it(`Auth.conirmSignUp should be called by confirmSignUp
