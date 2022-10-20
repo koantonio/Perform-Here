@@ -1,11 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
-import { createPlatform } from '@angular/core';
-import { ComponentFixture, InjectSetupWrapper, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from 'src/app/cognito.service';
 import { UserService } from 'src/app/user.service';
-import { AppRoutingModule } from '../../app-routing.module';
 import { SignUpComponent } from './sign-up.component';
 
 describe('SignUpComponent', () => {

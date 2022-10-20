@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser, CognitoService } from 'src/app/cognito.service';
-import { AppRoutingModule } from '../../app-routing.module';
 import { SignInComponent } from './sign-in.component';
 
 describe('SignInComponent', () => {
@@ -22,13 +21,13 @@ describe('SignInComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ SignInComponent ],
       imports: [
-        AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule
       ],
       providers: [
-        { provide: CognitoService, useValue: cognitoServiceSpy }
+        { provide: CognitoService, useValue: cognitoServiceSpy },
+        { provide: Router, useValue: routerSpy }
       ]
     })
     .compileComponents();
@@ -55,12 +54,10 @@ describe('SignInComponent', () => {
 
     signInForm.dispatchEvent(new Event('submit'));
     expect(cognitoServiceSpy.signIn).toHaveBeenCalledWith(user);
+
+    setTimeout(()=>{
+      expect(routerSpy.navigate).toHaveBeenCalledWith(['/browse']);
+    }, 500);
   });
 
-  it('should route to singup when signup anchor tag is clicked', () => {
-    let links = fixture.nativeElement.querySelectorAll('a');
-
-    expect(links[0].textContent).toEqual('Sign Up');
-    expect(links[0].getAttribute('href')).toEqual('/signup');
-  });
 });
