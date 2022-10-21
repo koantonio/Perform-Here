@@ -24,8 +24,8 @@ describe('LandingContentComponent', () => {
 
   it('should test Login and Signup buttons',()=>{
     //let links=fixture.nativeElement.querySelectorAll('a');
-    let btnL=fixture.nativeElement.querySelectorAll('[data-test-id="login"]');
-    let btnS=fixture.nativeElement.querySelectorAll('[data-test-id="signup"]');
+    let btnL=fixture.nativeElement.querySelector('[data-test-id="login"]');
+    let btnS=fixture.nativeElement.querySelector('[data-test-id="signup"]');
 
     expect(btnL.textContent).toEqual('Login');
     expect(btnL.getAttribute('routerLink')).toEqual('/signin');

@@ -21,8 +21,7 @@
     font-family: "lato", sans-serif;
     color: black;
     font-weight: bold;
-
-font-size: 20px;
+    font-size: 20px;
   }
   
   button {
@@ -67,6 +66,32 @@ font-size: 20px;
     content: "";
     display: table;
     clear: both;
+  }
+  
+  .artist-card-body {
+    text-align: center;
+    background-color: #333333;
+    padding: 25px ;
+    border-radius: 0.5rem;
+  }
+
+  .card-container {
+   /*border-radius: 5px;
+   margin: .5%;
+    flex-direction: row ;
+    display: inline-flex;
+    width:auto;
+   text-align: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px white;*/
+    margin: .5%;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap:wrap;
+  }
+
+  h4{
+    color:#ccccff   ;
   }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

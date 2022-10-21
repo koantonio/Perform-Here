@@ -20,17 +20,24 @@ export class ProfileComponent implements OnInit {
   a: Artist = new Artist("", "", "");
   votes: Votes[] = [];
 
+  user: Votes[]=[];
+
   //initializing artist and newArtist arrays
-  constructor(private votesService:VotesService, private artistService: ArtistsService, private userService: UserService, private cognitoService: CognitoService) {
+  constructor(private votesService:VotesService, private artistService: ArtistsService, private userService: UserService, private cognitoService: CognitoService, private voteservice: VotesService) {
     this.artistService.getAllArtists().subscribe(artists=>{
       this.artists=artists;
       this.newArtists = artists;
     });
+
   }
 
   //grabs users email
   ngOnInit(): void {
     this.userId = this.cognitoService.getEmail();
+    
+    // 
+    //this.votesService.getVotesByUser(this.userId).subscribe(votes => {this.votes = votes; console.log(votes);});
+
     this.artistService.getArtistById(this.userId).subscribe(artist => {
       if(artist != null) {
         this.isArtist = true;
@@ -40,12 +47,12 @@ export class ProfileComponent implements OnInit {
       if(this.isArtist) {
         let stageName:string = "";
         this.artistService.getArtistById(this.userId).subscribe(artist => {
-          this.votesService.getVotesForArtist(artist.stageName).subscribe(votes => {this.votes = votes; console.log(votes);});
+        this.votesService.getVotesForArtist(artist.stageName).subscribe(votes => {this.votes = votes; console.log(votes);});
         });
       }
-      else {
-        this.votesService.getVotesByUser(this.cognitoService.getEmail()).subscribe(votes => this.votes = votes);
-      }
+
+        this.votesService.getVotesByUser(this.cognitoService.getEmail()).subscribe(votes => this.user = votes);
+      
     });    
   }
 

@@ -5,7 +5,7 @@
 
     <h3 *ngIf="isArtist">Edit Explore Card</h3>
     <div *ngIf="isArtist" class="container">
-      <form >
+      <form>
 
       <div class="row">
         <div class="col-25">
@@ -29,6 +29,7 @@
       <div class="row">
         <button type="submit" value="Update" (click)="updateArtist()">Update</button>
       </div>
+
       </form>
     </div>
 
@@ -38,7 +39,16 @@
       <app-stats-table [votes]="votes" ></app-stats-table>
     </div>
     <br>
-    <div class="votes">
+
+    
       <h3>Vote History</h3>
-      
-    </div>
+        <div class="card-container" *ngFor="let i of user">
+          <div class="artist-card-body text-light">
+            <h4>You Voted For:</h4>
+              <p>{{i.artistName }}</p>
+            <h4>Location:</h4>
+              <p>{{ i.city }}, {{ i.state }}</p>
+            <h4>Discount Code:</h4>
+              <p>{{i.discountCode}}</p>
+          </div>
+        </div>
