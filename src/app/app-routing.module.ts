@@ -9,7 +9,6 @@ import { NavbarContentComponent } from './navbar-content/navbar-content.componen
 import { ProfileComponent } from './profile/profile.component';
 import { CognitoService } from './cognito.service';
 import { SuccessComponent } from './success/success.component';
-import { FailureComponent } from './failure/failure.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:LandingContentComponent },
@@ -35,11 +34,6 @@ const routes: Routes = [
   {
     path: 'success',
     component: SuccessComponent,
-    canActivate: [CognitoService]
-  },
-  {
-    path: 'failure',
-    component: FailureComponent,
     canActivate: [CognitoService]
   }
 ];

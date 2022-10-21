@@ -11,6 +11,6 @@
         <!-- <p>You will be automatically redirected to the browsing page in 10 seconds</p> -->
         </div>
         <div class="buttonToViewVotes">
-            <button class="viewVoteHistory" [routerLink]="['/profile']" fragment="votes">View Your Vote History</button>
+            <button class="viewVoteHistory" (click)="onProfile()">View Your Vote History</button>
         </div>
     </div>

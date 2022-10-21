@@ -12,12 +12,12 @@
           (ngModelChange)="updateArtists()"
         />
     </div>
-    <form class="stateCity" #userForm ="ngForm">
-        <select name="state" (change)="onSelect($event)" [(ngModel)]="pickedState" required>
+    <form class="stateCity">
+        <select name="state" (change)="onSelect($event)" [(ngModel)]="pickedState">
             <option>Select State</option>
             <option *ngFor="let state of states" value="{{state.id}}">{{state.name}}</option>
         </select>
-        <select name="city" class="selectCity" [(ngModel)]="pickedCity" required>
+        <select name="city" class="selectCity" [(ngModel)]="pickedCity">
             <option>Select City</option>
             <option *ngFor="let city of cities">{{city.name}}</option>
         </select>
@@ -31,7 +31,7 @@
                 <h3>{{ artist.stageName }}</h3>
                 <p>{{ artist.description }}</p>
                 <div class="voteButton">
-                    <button type="button" class="votebtn text-light" (click)="checkout(artist.stageName)" data-bs-toggle="modal" data-bs-target="#myModal" [disabled]="!userForm.form.valid">Vote</button>
+                    <button type="button" class="votebtn text-light" (click)="checkout(artist.stageName)" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
 
                  </div>
             </div>
