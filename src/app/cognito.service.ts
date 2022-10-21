@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import Amplify, { Auth } from 'aws-amplify';
 import { ArtistsService } from './artists.service';
-import { Artist } from './artist';
-import { User } from './user';
-import { UserService } from './user.service';
-import { from as fromPromise, Observable, map, tap } from 'rxjs';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router  } from '@angular/router';
 
 export interface IUser {
   email: string;
@@ -48,9 +43,6 @@ export class CognitoService implements CanActivate{
         name: user.firstName,
         family_name: user.lastName,
         email: user.email
-      },
-      autoSignIn: { // optional - enables auto sign in after user is confirmed
-        enabled: true,
       }
     });
   }
@@ -101,9 +93,7 @@ export class CognitoService implements CanActivate{
     }
   }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  public canActivate(): Promise<boolean> {
       return this.isAuthenticated().then(result => {
         if(result) {
           return true;
@@ -115,15 +105,22 @@ export class CognitoService implements CanActivate{
       });
   }
   
+ // public passwordReset() {
+ //   Auth.currentAuthenticatedUser()
+ //   .then(user => {
+ //     return Auth.forgotPassword
+ //   })
+ // }
+
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
   }
 
-  public updateUser(user: IUser): Promise<any> {
-    return Auth.currentUserPoolUser()
-    .then((cognitoUser: any) => {
-      return Auth.updateUserAttributes(cognitoUser, user);
-    });
-  }
+ // public updateUser(user: IUser): Promise<any> {
+ //   return Auth.currentUserPoolUser()
+ //   .then((cognitoUser: any) => {
+ //     return Auth.updateUserAttributes(cognitoUser, user);
+ //   });
+ // }
 
 }

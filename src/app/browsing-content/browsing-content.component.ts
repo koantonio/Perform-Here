@@ -68,7 +68,12 @@ export class BrowsingContentComponent implements OnInit {
     if(stripe != null) {
       const {error}  = await stripe.redirectToCheckout({
         mode: 'payment',
-        lineItems: [{ price: this.priceId, quantity: this.quantity }],
+        lineItems: [
+          { 
+            price: this.priceId, 
+            quantity: this.quantity 
+          }
+        ],
         successUrl: `http://localhost:4200/success`,
         cancelUrl: `http://localhost:4200/browse`,
       });

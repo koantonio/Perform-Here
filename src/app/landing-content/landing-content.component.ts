@@ -10,11 +10,17 @@ import { Router } from '@angular/router';
 export class LandingContentComponent implements OnInit {
 
 
-  constructor(private scroller: ViewportScroller) { }
+  constructor(private scroller: ViewportScroller, private router: Router) { }
 
   ngOnInit(): void {
   }
   goToMission(){
     this.scroller.scrollToAnchor("mission");
+  }
+  onLogin(){
+    this.router.navigate(['/signin']);
+  }
+  signUp(){
+    this.router.navigate(['/signup']);
   }
 }

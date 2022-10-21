@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { loadStripe } from '@stripe/stripe-js';
 
 import { BrowsingContentComponent } from './browsing-content.component';
 
@@ -9,7 +10,7 @@ describe('BrowsingContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule ],
       declarations: [ BrowsingContentComponent ],
       // providers: [
       //   {provide: }

@@ -39,23 +39,3 @@ export class SignInComponent implements OnInit {
     }
   }
 }
-
-/*
-var id: string = "Test";
-          cognitoUser.getSession((err: any, session: any) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
-          });
-    
-          cognitoUser.getUserAttributes((err: any, result:any) => {
-            if (err) {
-              alert(err.message || JSON.stringify(err));
-              return;
-            }
-            id = JSON.parse(result[0]).Value;
-            this.userService.setUserId(id);
-            this.router.navigate(['browse']);
-          });
-*/

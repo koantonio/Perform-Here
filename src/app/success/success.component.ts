@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocationsService } from '../locations.service';
 import { Votes } from '../votes';
 import { VotesService } from '../votes.service';
@@ -11,8 +12,10 @@ import { VotesService } from '../votes.service';
 export class SuccessComponent implements OnInit {
 
   message: string = "";
+  fanMessage: string ="";
+  public counter: number = 0;
 
-  constructor(private voteService: VotesService, private locationService:LocationsService) { }
+  constructor(private voteService: VotesService, private locationService:LocationsService, private router: Router) { }
 
   ngOnInit(): void {
     this.message = "You voted for " + localStorage.getItem("pickedArtist") + " at the location " + localStorage.getItem("pickedCity") + " " + localStorage.getItem("pickedState");
@@ -24,5 +27,8 @@ export class SuccessComponent implements OnInit {
     else {
       console.log("Invalid State");
     }
+    setTimeout(()=> {
+      this.router.navigate(['browse']);
+    }, 10000);
   }
 }

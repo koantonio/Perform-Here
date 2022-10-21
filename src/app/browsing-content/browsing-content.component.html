@@ -31,37 +31,13 @@
                 <h3>{{ artist.stageName }}</h3>
                 <p>{{ artist.description }}</p>
                 <div class="voteButton">
-                    <!-- <button [routerLink]="['/vote']"  class="votebtn text-light">Vote</button>-->
-                    
                     <button type="button" class="votebtn text-light" (click)="checkout(artist.stageName)" data-bs-toggle="modal" data-bs-target="#myModal">Vote</button>
 
-                         <!-- <div class="container mt-5">
-        
-                             <div class="modal" id="myModal">
-                                 <div class="modal-dialog">
-                                     <div class="modal-content">
-                                         <div class="modal-header">
-                                
-
-                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                         </div>
-                                         <div class="modal-body">
-                                     </div>
-                                 </div>
-                             </div>
-                         </div> -->
                  </div>
             </div>
         </div>
     </div>
 
 </div>
-<!--<div class="search">
-    <input
-    type="search"
-    class="form-control rounded"
-    placeholder="Search here"
-    />
-    <button style='font-size:24px'>Button <i class='fas fa-search'></i></button>
-        <i class="fas fa-search"></i> -->
+
 </div>
