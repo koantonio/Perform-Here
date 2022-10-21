@@ -12,7 +12,6 @@ import { NavbarContentComponent } from './navbar-content/navbar-content.componen
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { SuccessComponent } from './success/success.component';
-import { FailureComponent } from './failure/failure.component';
 import { StatsTableComponent } from './stats-table/stats-table.component';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -28,7 +27,6 @@ import { StatsTableComponent } from './stats-table/stats-table.component';
     NavbarContentComponent,
     ProfileComponent,
     SuccessComponent,
-    FailureComponent,
     StatsTableComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
