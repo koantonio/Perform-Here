@@ -27,8 +27,8 @@ export class SuccessComponent implements OnInit {
     else {
       console.log("Invalid State");
     }
-    setTimeout(()=> {
-      this.router.navigate(['browse']);
-    }, 10000);
+    // setTimeout(()=> {
+    //   this.router.navigate(['browse']);
+    // }, 10000);
   }
 }

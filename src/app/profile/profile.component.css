@@ -1,11 +1,16 @@
 * {
     box-sizing: border-box;
   }
-  
   h3{
     color: white;
     text-align: center;
   }
+.voteHistory{
+  margin-left: 5%;
+  margin-right: 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
 
   input[type=text], select, textarea {
     width: 100%;
@@ -84,7 +89,7 @@
    text-align: center;
     justify-content: center;
     box-shadow: 2px 2px 5px white;*/
-    margin: .5%;
+    margin: .8%;
     display: inline-flex;
     justify-content: center;
     flex-wrap:wrap;

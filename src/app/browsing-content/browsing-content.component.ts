@@ -6,6 +6,7 @@ import { Artist } from '../artist';
 import { CognitoService } from '../cognito.service';
 import { LocationsService } from '../locations.service';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-browsing-content',
