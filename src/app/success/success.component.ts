@@ -31,4 +31,7 @@ export class SuccessComponent implements OnInit {
     //   this.router.navigate(['browse']);
     // }, 10000);
   }
+  onProfile(){
+    this.router.navigate(['/profile']);
+  }
 }
