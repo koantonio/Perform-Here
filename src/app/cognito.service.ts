@@ -19,7 +19,7 @@ export class CognitoService implements CanActivate{
 
   public authSubject = new BehaviorSubject<boolean>(false);
   
-  private authenticationSubject: BehaviorSubject<any>;
+  public authenticationSubject: BehaviorSubject<any>;
   public isAuth: boolean = false;
 
   userId: string = "";
