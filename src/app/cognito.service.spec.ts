@@ -40,6 +40,19 @@ describe('CognitoService', () => {
     });
   });
 
+  it('isAuthenticated, should return true if authenticationSubject is true', async () => {
+    let isAuthenticated: boolean;
+    service.authenticationSubject.next(true);
+
+    service.isAuthenticated().then(
+      res => isAuthenticated = res
+    );
+    
+    setTimeout(()=>{
+      expect(isAuthenticated).toBeTruthy()
+    });
+  });
+
   it('getUser should call currentUserInfo and return a user', () => {
     spyOn(Amplify.Auth, 'currentUserInfo').and.returnValue(Promise.resolve(user));
     service.getUser().then(
