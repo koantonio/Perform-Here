@@ -4,7 +4,7 @@ import { Artist } from '../artist';
 import { Votes } from '../votes';
 import { ThisReceiver } from '@angular/compiler';
 
-class CityVotes{
+export class CityVotes{
   constructor(
       public votes: number,
       public city: string | null,
@@ -37,7 +37,6 @@ export class StatsTableComponent implements OnInit {
     let flag:boolean = false;
     this.votes.forEach(vote => {
       flag = false;
-      console.log(vote);
       if(this.votesPerCity.length != 0) {  //Votes per city array not empty
         this.votesPerCity.forEach(cityVote => {
           if(cityVote.city === vote.city) {    //Found City in votes per city array

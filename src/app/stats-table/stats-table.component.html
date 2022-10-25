@@ -14,8 +14,8 @@
               <td>{{vote.state}}</td>
               <td>{{vote.votes}}</td>
               <td class="confSection">
-                <input type="text" name="discCode" id="discCode" placeholder="Discount Code" #discCode>
-                <button class="confButton" (click)="confirmLocation(vote.artistName, vote.state, vote.city, discCode)">Confirm</button></td>
+                <input type="text" name="discCode" data-test-id="discount" id="discCode" placeholder="Discount Code" #discCode>
+                <button class="confButton" data-test-id="confbutton" (click)="confirmLocation(vote.artistName, vote.state, vote.city, discCode)">Confirm</button></td>
             </tr>
           </tbody>
     </table>
