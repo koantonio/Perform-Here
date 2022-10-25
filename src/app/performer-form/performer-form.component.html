@@ -1,6 +1,6 @@
 <div class="page">
     <div class="artist_form vstack gap-1">
-        <form [formGroup]="artistForm" (ngSubmit)="onSubmit()" class="card shadow-2-strong card-registration clearfix" novalidate>
+        <form [formGroup]="artistForm" (ngSubmit)="onSubmit()" data-test-id="performerForm" class="card shadow-2-strong card-registration clearfix" novalidate>
             <h1>Performer Application</h1>
 
             <div class="row">
@@ -14,6 +14,7 @@
                     class="form-control text"
                     formControlName="firstname"
                     required
+                    data-test-id="firstName"
                   />
                   <div *ngIf="firstname?.invalid && (firstname?.dirty ||firstname?.touched)">
                     <div class="validator" *ngIf="firstname?.errors?.['required']">
@@ -31,6 +32,7 @@
                     id="lastname"
                     class="form-control text"
                     formControlName="lastname"
+                    data-test-id="lastName"
                   />
                   <div *ngIf="lastname?.invalid && (lastname?.dirty ||lastname?.touched)">
                     <div class="validator" *ngIf="lastname?.errors?.['required']">
@@ -49,6 +51,7 @@
                   id="stagename"
                   formControlName="stagename"
                   class="form-control text"
+                  data-test-id="stagename"
                 />
                 <div *ngIf="stagename?.invalid && (stagename?.dirty ||stagename?.touched)">
                     <div class="validator" *ngIf="stagename?.errors?.['required']">
@@ -66,6 +69,7 @@
                   id="accountemail"
                   formControlName="accountemail"
                   class="form-control text"
+                  data-test-id="accountEmail"
                 />
                 <div *ngIf="accountemail?.invalid && (accountemail?.dirty ||accountemail?.touched)">
                     <div class="validator" *ngIf="accountemail?.errors?.['required']">
@@ -86,6 +90,7 @@
                   id="managementemail"
                   formControlName="managementemail"
                   class="form-control text"
+                  data-test-id="managementEmail"
                 />
                 <div class="validator" *ngIf="managementemail?.errors?.['email']">
                     invalid email id
@@ -101,6 +106,7 @@
                 id="phoneno"
                 formControlName="phoneno"
                 class="form-control"
+                data-test-id="phoneno"
                 />
                 <div *ngIf="phoneno?.invalid && (phoneno?.dirty ||phoneno?.touched)">
                     <div class="validator" *ngIf="phoneno?.errors?.['required']">
@@ -112,7 +118,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Register as a Performer</button>
+            <button data-test-id="submit" type="submit" class="btn btn-primary btn-lg btn-block">Register as a Performer</button>
         </form>
 
         <p class="return">Changed Your Mind? <a [routerLink]="'/dashboard'">Return to app</a></p>
