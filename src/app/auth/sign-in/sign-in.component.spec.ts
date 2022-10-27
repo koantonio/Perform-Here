@@ -57,7 +57,7 @@ describe('SignInComponent', () => {
 
     setTimeout(()=>{
       expect(routerSpy.navigate).toHaveBeenCalledWith(['/browse']);
-    }, 500);
+    }, 1000);
   });
 
 });
