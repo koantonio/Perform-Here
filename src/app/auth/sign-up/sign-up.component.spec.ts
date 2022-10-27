@@ -49,7 +49,7 @@ describe('SignUpComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should invoke SignUp, with valid form data when user clicks submit', async () => {
+  it('Should invoke SignUp, with valid form data when user clicks submit', () => {
     cognitoServiceSpy.signUp.and.returnValue(Promise.resolve(true));
     let firstNameTextBox = fixture.nativeElement.querySelector('[data-test-id="firstName"]');
     let lastNameTextBox = fixture.nativeElement.querySelector('[data-test-id="lastName"]');
@@ -74,9 +74,9 @@ describe('SignUpComponent', () => {
     confirmPasswordTextBox.dispatchEvent(new Event('input'));
 
     signUpForm.dispatchEvent(new Event('submit'));
-    expect(cognitoServiceSpy.signUp).toHaveBeenCalledWith(user);
     fixture.whenStable().then(
       () => {
+        expect(cognitoServiceSpy.signUp).toHaveBeenCalledWith(user);
         expect(component.loading).toBeFalse;
         expect(component.isConfirm).toBeTrue;
       }
@@ -126,31 +126,35 @@ describe('SignUpComponent', () => {
   });
 
   it(`Auth.conirmSignUp should be called by confirmSignUp
-      with user passed, then navigate to signIn if not an artist`, async () => {
+      with user passed, then navigate to signIn if not an artist`, () => {
     component.isArtist = false;
     cognitoServiceSpy.confirmSignUp.and.returnValue(Promise.resolve(true));
     routerSpy.navigate.and.returnValue(Promise.resolve(true));
     component.confirmSignUp();
-    expect(cognitoServiceSpy.confirmSignUp).toHaveBeenCalledWith(user);
-    await fixture.whenStable();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/signin']);
+    fixture.whenStable().then(() => {
+      expect(cognitoServiceSpy.confirmSignUp).toHaveBeenCalledWith(user);
+      expect(routerSpy.navigate).toHaveBeenCalledWith(['/signin']);
+    });
   });
 
   it(`Auth.conirmSignUp should be called by confirmSignUp
-      with user passed, then navigate to performer form if not an artist`, async () => {
+      with user passed, then navigate to performer form if not an artist`, () => {
     component.isArtist = true;
     cognitoServiceSpy.confirmSignUp.and.returnValue(Promise.resolve(true));
     routerSpy.navigate.and.returnValue(Promise.resolve(true));
     component.confirmSignUp();
-    expect(cognitoServiceSpy.confirmSignUp).toHaveBeenCalledWith(user);
-    await fixture.whenStable();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/performer_form']);
+    fixture.whenStable().then(() => {
+      expect(cognitoServiceSpy.confirmSignUp).toHaveBeenCalledWith(user);
+      expect(routerSpy.navigate).toHaveBeenCalledWith(['/performer_form']);
+    });
   });
 
   it(`confirmSignUp should call Auth.confirmSignUp, 
-  passing user, then set loading to false on failure`, async () => {
+  passing user, then set loading to false on failure`, () => {
     cognitoServiceSpy.confirmSignUp.and.returnValue(Promise.reject(true));
     component.confirmSignUp();
-    expect(cognitoServiceSpy.confirmSignUp).toHaveBeenCalledWith(user);
+    fixture.whenStable().then(() => {
+      expect(cognitoServiceSpy.confirmSignUp).toHaveBeenCalledWith(user);
+    });
   });
 });

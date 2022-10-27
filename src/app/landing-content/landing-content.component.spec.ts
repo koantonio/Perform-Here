@@ -6,10 +6,16 @@ import { LandingContentComponent } from './landing-content.component';
 describe('LandingContentComponent', () => {    
   let component: LandingContentComponent;
   let fixture: ComponentFixture<LandingContentComponent>;
+  let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
+    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    
     await TestBed.configureTestingModule({
-      declarations: [ LandingContentComponent ]
+      declarations: [ LandingContentComponent ],
+      providers: [
+        { provide: Router, useValue: routerSpy }
+      ]
     })
     .compileComponents();
 
@@ -23,17 +29,13 @@ describe('LandingContentComponent', () => {
   });
 
   it('should route to signin page', ()=>{
-    let myRouter = TestBed.get(Router);
-    const navSpy = spyOn(myRouter, 'navigate');
     component.onLogin();
-    expect(navSpy).toHaveBeenCalledWith(['/signin']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/signin']);
   });
 
   it('should route to signup page', ()=>{ 
-    let myRouter = TestBed.get(Router);
-    const navSpy = spyOn(myRouter, 'navigate');
     component.signUp();
-    expect(navSpy).toHaveBeenCalledWith(['/signup']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/signup']);
   });
 
 });

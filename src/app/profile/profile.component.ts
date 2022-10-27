@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
       if(this.isArtist) {
         let stageName:string = "";
         this.artistService.getArtistById(this.userId).subscribe(artist => {
-        this.votesService.getVotesForArtist(artist.stageName).subscribe(votes => {this.votes = votes; console.log(votes);});
+        this.votesService.getVotesForArtist(artist.stageName).subscribe(votes => {this.votes = votes;});
         });
       }
 
