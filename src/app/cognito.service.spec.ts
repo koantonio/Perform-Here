@@ -37,7 +37,7 @@ describe('CognitoService', () => {
 
     setTimeout(()=>{
       expect(isAuthenticated).toBeTruthy()
-    });
+    }, 1000);
   });
 
   it('isAuthenticated, should return true if authenticationSubject is true', async () => {
@@ -50,7 +50,7 @@ describe('CognitoService', () => {
     
     setTimeout(()=>{
       expect(isAuthenticated).toBeTruthy()
-    });
+    }, 2000);
   });
 
   it('getUser should call currentUserInfo and return a user', () => {
@@ -76,7 +76,7 @@ describe('CognitoService', () => {
     setTimeout(() => {
       expect(isActivated).toBeFalse();
       expect(spy).toHaveBeenCalled();
-    });
+    },3000);
   });
 
   it(`canActivate should return true if user is logged in and should navigate to /signin`, () =>{
@@ -90,7 +90,7 @@ describe('CognitoService', () => {
       expect(isActivated).toBeTrue()
       expect(spy).toHaveBeenCalled()
       expect(routerSpy.navigate).toHaveBeenCalledWith(['/signin'])
-    }, 500);
+    }, 1000);
   });
 
   it(`signUp should call Auth.signUp with passed in user info`, () => {
@@ -136,6 +136,6 @@ describe('CognitoService', () => {
       expect(IsSignedOut).toBeTrue()
       expect(spy).toHaveBeenCalled();
       expect(service.isAuth).toBeTrue;
-    },500)
+    },1000)
   });
 });
