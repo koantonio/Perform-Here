@@ -78,3 +78,9 @@ input.text{
 .confirm-label p {
     color: #7C00F8;
 }
+
+.validator {
+    color: red;
+    font-style: italic;
+    font-size: small;
+}

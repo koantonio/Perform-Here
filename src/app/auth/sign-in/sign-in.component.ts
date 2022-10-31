@@ -15,6 +15,7 @@ export class SignInComponent implements OnInit {
   password: string = '';
   loading: boolean;
   user: IUser; //variable to get email of the artist logging in
+  invalid: boolean = false; 
 
   constructor(private router: Router, private userService: UserService, private cognitoService: CognitoService) {
     this.loading = false;
@@ -24,7 +25,6 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {}
 
   onSignIn(form: NgForm) {
-
     this.user.email = this.email_address;
     this.user.password = this.password;
 
@@ -34,8 +34,12 @@ export class SignInComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/browse']);
       }).catch(() => {
+        this.invalid = true;
         this.loading = false;
       });
+    }
+    else {
+      this.invalid = true;
     }
   }
 }
