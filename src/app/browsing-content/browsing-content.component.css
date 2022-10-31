@@ -74,30 +74,15 @@
     margin-top: 20px;
   }
 
-  /* .browse-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    flex-wrap: wrap;
-    grid-gap: 2rem;
-} */
 .artist-card-body{
     text-align: center;
 }
 
-.browse-grid{
-    /* display:grid;
-    grid-template-columns: repeat(auto-fit, 20rem);
-    justify-content: center; */
-
-}
 .search-results{
     margin-top: 30px;
     display: flex;
-    /* display:grid;
-    grid-template-columns: repeat(auto-fit, 20rem);
-    justify-content: center; */
-
 }
+
 .concertImage{
     width: 200px;
     height: 125px;
@@ -106,7 +91,6 @@
 .result-container{
     margin-top: 30px;
     display:grid;
-    /* display: flex; */
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center;
 }

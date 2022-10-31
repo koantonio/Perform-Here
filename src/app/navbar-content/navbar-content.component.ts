@@ -13,10 +13,6 @@ export class NavbarContentComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private cognitoService: CognitoService) { }
 
   ngOnInit(): void {
-    /*
-    this.cognitoService.isAuthenticated().subscribe(
-      res=> this.isAuthenticated=res
-    )*/
   }
   
   onLogout(): void {

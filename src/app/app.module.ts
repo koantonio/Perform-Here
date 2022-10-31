@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { SuccessComponent } from './success/success.component';
 import { StatsTableComponent } from './stats-table/stats-table.component';
-//import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({

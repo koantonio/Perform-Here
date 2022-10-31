@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import Amplify, { Auth } from 'aws-amplify';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {User} from './user';
 import { catchError, throwError } from 'rxjs';

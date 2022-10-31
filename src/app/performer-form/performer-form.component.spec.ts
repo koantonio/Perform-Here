@@ -5,7 +5,6 @@ import { PerformerFormComponent } from './performer-form.component';
 import { ArtistForm } from '../artistForm';
 import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
-import { setTestabilityGetter } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 

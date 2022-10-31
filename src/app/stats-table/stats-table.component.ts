@@ -1,8 +1,6 @@
 import { Component, Input, OnInit, ɵisListLikeIterable } from '@angular/core';
 import { VotesService } from '../votes.service';
-import { Artist } from '../artist';
 import { Votes } from '../votes';
-import { ThisReceiver } from '@angular/compiler';
 
 export class CityVotes{
   constructor(
