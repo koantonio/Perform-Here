@@ -34,6 +34,10 @@
       />
     </div>
 
+    <label class="validator" *ngIf="invalid">
+      Incorrect Username or Password
+    </label>
+
     <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
   </form>
   <div>
