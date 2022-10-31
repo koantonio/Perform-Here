@@ -64,7 +64,7 @@ export class BrowsingContentComponent implements OnInit {
     localStorage.setItem("pickedState", this.pickedState);
     localStorage.setItem("pickedCity",this.pickedCity);
     localStorage.setItem("pickedArtist",stageName);
-
+    
     const stripe = await this.stripePromise;
     if(stripe != null) {
       const {error}  = await stripe.redirectToCheckout({
@@ -75,8 +75,8 @@ export class BrowsingContentComponent implements OnInit {
             quantity: this.quantity 
           }
         ],
-        successUrl: `http://localhost:4200/success`,
-        cancelUrl: `http://localhost:4200/browse`,
+        successUrl: `http://960476-perform-here-s3.s3-website-us-west-2.amazonaws.com/success`,
+        cancelUrl: `http://960476-perform-here-s3.s3-website-us-west-2.amazonaws.com/browse`,
       });
     }
   }
