@@ -35,9 +35,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.cognitoService.getEmail();
     
-    // 
-    //this.votesService.getVotesByUser(this.userId).subscribe(votes => {this.votes = votes; console.log(votes);});
-
     this.artistService.getArtistById(this.userId).subscribe(artist => {
       if(artist != null) {
         this.isArtist = true;

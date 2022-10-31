@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { LandingContentComponent } from './landing-content.component';
 

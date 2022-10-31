@@ -84,19 +84,6 @@ describe('BrowsingContentComponent', () => {
     expect(title.textContent).toContain('Choose');
   })
 
-  /*
-  it(`should display search bar and narrow search when value is entered`, fakeAsync(() => {
-    let searchBar = fixture.nativeElement.querySelector('[data-test-id="searchbartest"]')
-    expect(searchBar.textContent).toEqual("");
-    const updateSpy = spyOn(component, "updateArtists");
-    searchBar.value = "b";
-    searchBar.dispatchEvent(new Event('input'));
-    fixture.detectChanges()
-    tick();
-    expect(updateSpy).toHaveBeenCalled();
-  }));
-  */
-
   it('updateArtists should filter the artist array', () => {
     component.artists = fakeArtists;
     component.updateArtists();

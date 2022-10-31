@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { Auth, Amplify } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import { CognitoService, IUser } from './cognito.service';
 
 describe('CognitoService', () => {

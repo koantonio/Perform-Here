@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { ArtistsService } from '../artists.service';
 import { Artist } from '../artist';
 import { CognitoService } from '../cognito.service';
 import { LocationsService } from '../locations.service';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-browsing-content',

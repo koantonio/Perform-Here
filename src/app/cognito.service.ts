@@ -104,23 +104,8 @@ export class CognitoService implements CanActivate{
         }
       });
   }
-  
- // public passwordReset() {
- //   Auth.currentAuthenticatedUser()
- //   .then(user => {
- //     return Auth.forgotPassword
- //   })
- // }
 
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
   }
-
- // public updateUser(user: IUser): Promise<any> {
- //   return Auth.currentUserPoolUser()
- //   .then((cognitoUser: any) => {
- //     return Auth.updateUserAttributes(cognitoUser, user);
- //   });
- // }
-
 }

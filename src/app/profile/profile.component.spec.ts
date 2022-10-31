@@ -3,11 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Artist } from '../artist';
 import { ArtistsService } from '../artists.service';
 import { VotesService } from '../votes.service';
-import { of, Observable } from 'rxjs';
+import { of } from 'rxjs';
 
 import { ProfileComponent } from './profile.component';
 import { CognitoService } from '../cognito.service';
-import { compileNgModule } from '@angular/compiler';
 import { Votes } from '../votes';
 
 describe('ProfileComponent', () => {
