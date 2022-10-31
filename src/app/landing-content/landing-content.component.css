@@ -1,4 +1,4 @@
-.lilShit {
+.landing {
     display: flex;
     color: white;
     width: 100%;
@@ -71,7 +71,7 @@
     height: 100%;
     width: 100%;
     border-left: 3px solid #FF6565;
-    animation: typing 1.5s steps(8) infinite;
+    animation: typing 3.0s steps(8) infinite;
 }
 /* Animation */
 
@@ -247,7 +247,7 @@
 }
 
 .demand-card{
-    margin: 40px;
+    margin: 30px;
     text-align: center;
     background-color: #161616;
     padding: 25px 50px 50px 50px;
